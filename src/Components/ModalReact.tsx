@@ -5,16 +5,19 @@ export const ModalReact = ({
   id,
   visibleModal,
   setVisibleModal,
+  linkName,
 }: {
   children: React.ReactNode;
   id: string;
   visibleModal: TVisibleModal;
   setVisibleModal: (modal: TVisibleModal) => void;
+  linkName: string;
 }) => {
-  const handleVisibility = (modalState: TVisibleModal) =>
-    modalState === visibleModal ? "is-visible" : "";
+  const handleVisibility = () =>
+    linkName === visibleModal ? "is-visible" : "";
+
   return (
-    <div className={`modal-overlay ${handleVisibility("form")}`} id={id}>
+    <div className={`modal-overlay ${handleVisibility()}`} id={id}>
       <div className="modal-body">
         <div
           className="close-button"
