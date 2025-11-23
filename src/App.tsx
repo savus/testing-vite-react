@@ -4,15 +4,32 @@ import { MainHeader } from "./Components/MainHeader";
 import { TextInput } from "./Components/TextInput";
 import { ModalReact } from "./Components/ModalReact.tsx";
 import { useState } from "react";
-import type { TVisibleModal } from "./types.ts";
+import type { TUserInfo, TVisibleModal } from "./types.ts";
 import { PhoneInput } from "./Components/PhoneInput.tsx";
 import { SubmitButton } from "./Components/SubmitButton.tsx";
+import { ModalForm } from "./Components/ModalForm.tsx";
 
 function App() {
   const [visibleModal, setVisibleModal] = useState<TVisibleModal>("none");
+  const [userInformation, setUserInformation] = useState<TUserInfo | null>(
+    null
+  );
 
   return (
     <>
+      <div>user info</div>
+      {userInformation ? (
+        <div>
+          <div>first name: {userInformation?.firstName}</div>
+          <div>Last name: {userInformation?.lastName}</div>
+          <div>City: {userInformation?.city}</div>
+          <div>email: {userInformation?.email}</div>
+          <div>Phone: {userInformation?.phoneInput}</div>
+        </div>
+      ) : (
+        <div>User Info Not Submitted</div>
+      )}
+
       <MainHeader
         setVisibleModal={(modal: TVisibleModal) => {
           setVisibleModal(modal);
@@ -24,47 +41,11 @@ function App() {
         setVisibleModal={(modal: TVisibleModal) => setVisibleModal(modal)}
         linkName="form"
       >
-        <TextInput
-          labelFor="first-name"
-          labelText="First Name"
-          inputProps={{
-            id: "first-name",
-            placeholder: "Type your first name here",
-            name: "first-name",
-            type: "text",
+        <ModalForm
+          setUserInformation={(info: TUserInfo) => {
+            setUserInformation(info);
           }}
         />
-        <TextInput
-          labelFor="last-name"
-          labelText="Last Name"
-          inputProps={{
-            id: "last-name",
-            placeholder: "Type your last name here",
-            name: "last-name",
-            type: "text",
-          }}
-        />
-        <TextInput
-          labelFor="email"
-          labelText="Email"
-          inputProps={{
-            id: "email",
-            placeholder: "ex. something@gmail.com",
-            name: "email",
-            type: "email",
-          }}
-        />
-        <TextInput
-          labelFor="city"
-          labelText="City"
-          inputProps={{
-            id: "city",
-            placeholder: "ex. hobbiton",
-            name: "city",
-          }}
-        />
-        <PhoneInput />
-        <SubmitButton />
       </ModalReact>
     </>
   );
