@@ -1,12 +1,9 @@
 import "../src/css/app.css";
 import "./js/index.ts";
 import { MainHeader } from "./Components/MainHeader";
-import { TextInput } from "./Components/TextInput";
 import { ModalReact } from "./Components/ModalReact.tsx";
 import { useState } from "react";
 import type { TUserInfo, TVisibleModal } from "./types.ts";
-import { PhoneInput } from "./Components/PhoneInput.tsx";
-import { SubmitButton } from "./Components/SubmitButton.tsx";
 import { ModalForm } from "./Components/ModalForm.tsx";
 
 function App() {

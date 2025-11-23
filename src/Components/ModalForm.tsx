@@ -1,4 +1,3 @@
-import type React from "react";
 import { TextInput } from "./TextInput";
 import { PhoneInput } from "./PhoneInput";
 import { SubmitButton } from "./SubmitButton";

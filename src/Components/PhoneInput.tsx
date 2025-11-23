@@ -1,4 +1,4 @@
-import { createRef, useRef, type ChangeEventHandler } from "react";
+import { useRef, type ChangeEventHandler } from "react";
 import type { TPhoneInput } from "../types";
 
 export const PhoneInput = ({
@@ -19,9 +19,25 @@ export const PhoneInput = ({
     (index: 0 | 1 | 2): ChangeEventHandler<HTMLInputElement> =>
     (e) => {
       const value = e.target.value;
+      const currentMaxLength = maxLengths[index];
+      const nextRef =
+        index < inputRefs.length - 1 ? inputRefs[index + 1] : inputRefs[index];
+      const prevRef = index > 0 ? inputRefs[index - 1] : inputRefs[index];
+      const shouldGoToNextRef = value.length === currentMaxLength;
+      const shouldGoToPrevRef = value.length === 0;
+
+      if (shouldGoToNextRef) {
+        nextRef.current?.focus();
+      }
+
+      if (shouldGoToPrevRef) {
+        prevRef.current?.focus();
+      }
+
       const newState = phoneInputState.map((phoneInput, phoneInputIndex) =>
         index === phoneInputIndex ? value : phoneInput
       );
+
       setPhoneInputState(newState as TPhoneInput);
     };
 
@@ -31,19 +47,25 @@ export const PhoneInput = ({
       <input
         type="text"
         maxLength={maxLengths[0]}
-        onChange={() => createOnChangeHandler(0)}
+        value={phoneInputState[0]}
+        onChange={createOnChangeHandler(0)}
+        ref={inputRefs[0]}
       />
       -
       <input
         type="text"
         maxLength={maxLengths[1]}
-        onChange={() => createOnChangeHandler(1)}
+        value={phoneInputState[1]}
+        onChange={createOnChangeHandler(1)}
+        ref={inputRefs[1]}
       />
       -
       <input
         type="text"
         maxLength={maxLengths[2]}
-        onChange={() => createOnChangeHandler(2)}
+        value={phoneInputState[2]}
+        onChange={createOnChangeHandler(2)}
+        ref={inputRefs[2]}
       />
     </div>
   );
