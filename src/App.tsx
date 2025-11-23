@@ -24,7 +24,10 @@ function App() {
           <div>Last name: {userInformation?.lastName}</div>
           <div>City: {userInformation?.city}</div>
           <div>email: {userInformation?.email}</div>
-          <div>Phone: {userInformation?.phoneInput}</div>
+          <div>
+            Phone: {userInformation?.phoneInput[0]}{" "}
+            {userInformation?.phoneInput[1]} {userInformation?.phoneInput[2]}
+          </div>
         </div>
       ) : (
         <div>User Info Not Submitted</div>

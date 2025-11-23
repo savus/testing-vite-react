@@ -30,7 +30,7 @@ export const ModalForm = ({
           lastName: lastNameInput,
           city: cityInput,
           email: emailInput,
-          phoneInput: ["", "", ""],
+          phoneInput: phoneInputState,
         });
       }}
     >
