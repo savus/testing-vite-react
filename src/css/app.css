@@ -34,6 +34,24 @@ a {
   background: transparent;
 }
 
+button,
+input[type="submit"] {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  outline: none;
+  display: inline-flex;
+  border: none;
+  background: transparent;
+}
+
+button.btn-primary,
+input.btn-primary {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: var(--size-12) var(--size-20);
+  border-radius: var(--size-12);
+  font-size: var(--size-20);
+}
+
 .modal-overlay {
   --opacity: 0;
   --visibility: hidden;
@@ -72,7 +90,7 @@ a {
   --scale: 1;
   position: absolute;
   right: 5%;
-  top: 10%;
+  top: 5%;
   transition: transform 0.2s ease-in-out;
   transform: scale(var(--scale));
   width: var(--size-16);
@@ -95,7 +113,7 @@ a {
 }
 
 .input-primary label,
-.phone-input label {
+.input-phone label {
   letter-spacing: 0.5px;
 }
 
@@ -104,25 +122,25 @@ a {
 }
 
 .input-primary input,
-.phone-input input {
+.input-phone input {
   max-width: var(--size-320);
   outline: none;
 }
 
 .input-primary input,
-.phone-input input {
+.input-phone input {
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: var(--size-8);
   border-radius: 10px;
   box-shadow: inset 0px 0px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
-.phone-input {
+.input-phone {
   display: flex;
   gap: var(--size-8);
   align-items: center;
 }
 
-.phone-input input {
+.input-phone input {
   max-width: var(--size-50);
 }

@@ -3,7 +3,7 @@ import "../css/navbar.css";
 import type { TVisibleModal } from "../types";
 
 type State = {
-  activeLink: "form" | "menu" | "gallery" | "none";
+  activeLink: "form" | "menus" | "gallery" | "none";
 };
 
 export class Navbar extends Component<{
@@ -23,44 +23,34 @@ export class Navbar extends Component<{
     return (
       <>
         <nav>
-          <ul className="ul-defaults-none nav-items nav-js" id="nav-js">
+          <ul className="ul-defaults-none nav-items" id="nav-react">
             <li
               className={`${handleActive("form")}`}
-              data-open="modal-form-js"
               onClick={() => {
                 setVisibleModal("form");
-                this.setState({
-                  activeLink: "form",
-                });
+                this.setState({ activeLink: "form" });
               }}
             >
-              Link
+              Form
             </li>
             <li
-              className={`${handleActive("menu")}`}
+              className={`${handleActive("menus")}`}
               onClick={() => {
-                this.setState({
-                  activeLink: "menu",
-                });
+                setVisibleModal("menus");
+                this.setState({ activeLink: "menus" });
               }}
             >
-              Link
+              Menus
             </li>
             <li
               className={`${handleActive("gallery")}`}
               onClick={() => {
-                this.setState({
-                  activeLink: "gallery",
-                });
+                setVisibleModal("gallery");
+                this.setState({ activeLink: "gallery" });
               }}
             >
-              Link
+              Gallery
             </li>
-          </ul>
-          <ul className="ul-defaults-none nav-items" id="nav-react">
-            <li>Link</li>
-            <li>Link</li>
-            <li>Link</li>
           </ul>
         </nav>
       </>

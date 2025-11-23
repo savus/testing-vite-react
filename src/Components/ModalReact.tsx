@@ -1,4 +1,5 @@
 import type { TVisibleModal } from "../types";
+import "../css/modal-form.css";
 
 export const ModalReact = ({
   children,

@@ -5,6 +5,8 @@ import { TextInput } from "./Components/TextInput";
 import { ModalReact } from "./Components/ModalReact.tsx";
 import { useState } from "react";
 import type { TVisibleModal } from "./types.ts";
+import { PhoneInput } from "./Components/PhoneInput.tsx";
+import { SubmitButton } from "./Components/SubmitButton.tsx";
 
 function App() {
   const [visibleModal, setVisibleModal] = useState<TVisibleModal>("none");
@@ -17,7 +19,7 @@ function App() {
         }}
       />
       <ModalReact
-        id={"modal-nav-js"}
+        id={"modal-form-react"}
         visibleModal={visibleModal}
         setVisibleModal={(modal: TVisibleModal) => setVisibleModal(modal)}
         linkName="form"
@@ -61,6 +63,8 @@ function App() {
             name: "city",
           }}
         />
+        <PhoneInput />
+        <SubmitButton />
       </ModalReact>
     </>
   );
