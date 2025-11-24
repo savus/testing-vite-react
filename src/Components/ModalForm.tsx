@@ -4,6 +4,7 @@ import { SubmitButton } from "./SubmitButton";
 import type { TPhoneInput, TUserInfo } from "../types";
 import { useState } from "react";
 import { ErrorMessage } from "./ErrorMessage";
+import { isNameValid } from "../js/validations";
 
 export const ModalForm = ({
   setUserInformation,
@@ -20,6 +21,9 @@ export const ModalForm = ({
     "",
   ]);
 
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const isFirstNameValid = hasSubmitted && isNameValid(firstNameInput);
+
   return (
     <form
       action="#"
@@ -32,6 +36,7 @@ export const ModalForm = ({
           email: emailInput,
           phoneInput: phoneInputState,
         });
+        setHasSubmitted(true);
       }}
     >
       <TextInput
@@ -46,7 +51,7 @@ export const ModalForm = ({
           onChange: (e) => setFirstNameInput(e.target.value),
         }}
       />
-      <ErrorMessage message="Username Error" />
+      {!isFirstNameValid && <ErrorMessage message="Username Error" />}
       <TextInput
         labelFor="last-name"
         labelText="Last Name"
