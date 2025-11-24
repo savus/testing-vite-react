@@ -3,6 +3,7 @@ import { PhoneInput } from "./PhoneInput";
 import { SubmitButton } from "./SubmitButton";
 import type { TPhoneInput, TUserInfo } from "../types";
 import { useState } from "react";
+import { ErrorMessage } from "./ErrorMessage";
 
 export const ModalForm = ({
   setUserInformation,
@@ -45,6 +46,7 @@ export const ModalForm = ({
           onChange: (e) => setFirstNameInput(e.target.value),
         }}
       />
+      <ErrorMessage message="Username Error" />
       <TextInput
         labelFor="last-name"
         labelText="Last Name"

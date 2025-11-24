@@ -2,6 +2,8 @@
   /*colors*/
   --color-link: #3f65e3;
   --bg-form: #fff;
+  --color-error: rgb(254, 88, 88);
+  --error-txt: #000;
 
   /*sizes*/
   --size-5: 0.3125rem;
@@ -143,4 +145,16 @@ input.btn-primary {
 
 .input-phone input {
   max-width: var(--size-50);
+}
+
+.error-message {
+  background-color: var(--color-error);
+  color: var(--error-txt);
+  border-radius: var(--size-20);
+  padding: 0.4rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--size-18);
+  margin-top: 1rem 0;
 }
