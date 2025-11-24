@@ -6,10 +6,12 @@ export type TVisibleModal = "form" | "menus" | "gallery" | "none";
 
 export type TPhoneInput = [string, string, string];
 
+export type TPhoneInputAlt = string;
+
 export type TUserInfo = {
   firstName: string;
   lastName: string;
   city: string;
   email: string;
-  phoneInput: TPhoneInput;
+  phoneInput: TPhoneInput | TPhoneInputAlt;
 };
