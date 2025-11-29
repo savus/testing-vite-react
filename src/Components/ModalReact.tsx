@@ -1,19 +1,17 @@
-import type { TVisibleModal } from "../types";
 import "../css/modal-form.css";
+import { useNavbarStateContext } from "./NavbarStateProvider";
 
 export const ModalReact = ({
   children,
   id,
-  visibleModal,
-  setVisibleModal,
   linkName,
 }: {
   children: React.ReactNode;
   id: string;
-  visibleModal: TVisibleModal;
-  setVisibleModal: (modal: TVisibleModal) => void;
   linkName: string;
 }) => {
+  const { visibleModal, setVisibleModal } = useNavbarStateContext();
+
   const handleVisibility = () =>
     linkName === visibleModal ? "is-visible" : "";
 

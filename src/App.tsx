@@ -3,48 +3,32 @@ import "./js/index.ts";
 import { MainHeader } from "./Components/MainHeader";
 import { ModalReact } from "./Components/ModalReact.tsx";
 import { useState } from "react";
-import type { TDropdownMenu, TUserInfo, TVisibleModal } from "./types.ts";
+import type { TUserInfo } from "./types.ts";
 import { ModalForm } from "./Components/ModalForm.tsx";
+import { NavbarStateProvider } from "./Components/NavbarStateProvider.tsx";
+import { FullBody } from "./Components/FullBody.tsx";
 
 function App() {
-  const [visibleModal, setVisibleModal] = useState<TVisibleModal>("none");
   const [userInformation, setUserInformation] = useState<TUserInfo | null>(
     null
   );
-  const [dropdownMenu, setDropdownMenu] = useState<TDropdownMenu>("none");
 
   return (
     <>
-      <div
-        className="full-body"
-        onClick={() => {
-          if (dropdownMenu != "none") setDropdownMenu("none");
-        }}
-      >
-        <div className="container">
-          <MainHeader
-            setVisibleModal={(modal: TVisibleModal) => {
-              setVisibleModal(modal);
-            }}
-            dropdownMenu={dropdownMenu}
-            setDropdownMenu={(menu: TDropdownMenu) => {
-              setDropdownMenu(menu);
-            }}
-          />
-        </div>
-        <ModalReact
-          id={"modal-form-react"}
-          visibleModal={visibleModal}
-          setVisibleModal={(modal: TVisibleModal) => setVisibleModal(modal)}
-          linkName="form"
-        >
-          <ModalForm
-            setUserInformation={(info: TUserInfo) => {
-              setUserInformation(info);
-            }}
-          />
-        </ModalReact>
-      </div>
+      <NavbarStateProvider>
+        <FullBody>
+          <div className="container">
+            <MainHeader />
+          </div>
+          <ModalReact id={"modal-form-react"} linkName="form">
+            <ModalForm
+              setUserInformation={(info: TUserInfo) => {
+                setUserInformation(info);
+              }}
+            />
+          </ModalReact>
+        </FullBody>
+      </NavbarStateProvider>
     </>
   );
 }
