@@ -1,17 +1,10 @@
 import { TextInput } from "./TextInput";
-import { PhoneInput } from "./PhoneInput";
 import { SubmitButton } from "./SubmitButton";
-import type { TPhoneInput, TPhoneInputAlt, TUserInfo } from "../types";
 import { useState } from "react";
 import { ErrorMessage } from "./ErrorMessage";
-import {
-  isEmailValid,
-  isNameValid,
-  isPhoneValid,
-  patterns,
-  validate,
-} from "../js/validations";
+import { isEmailValid, patterns, validate } from "../js/validations";
 import { PhoneInputAlt } from "./PhoneInputAlt";
+import type { TPhoneInputAlt } from "../types";
 
 const firstNameErrorMessage = "First name is invalid, please re enter";
 const lastNameErrorMessage = "Last name is invalid, please re enter";
@@ -25,11 +18,7 @@ export const ModalForm = ({
   const [lastNameInput, setLastNameInput] = useState("");
   const [cityInput, setCityInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
-  // const [phoneInputState, setPhoneInputState] = useState<TPhoneInput>([
-  //   "",
-  //   "",
-  //   "",
-  // ]);
+
   const [phoneInputState, setPhoneInputState] = useState("");
 
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -58,7 +47,6 @@ export const ModalForm = ({
             email: emailInput,
             phoneInput: phoneInputState,
           });
-          console.log(phoneInputState);
         }
         setHasSubmitted(true);
       }}
@@ -113,12 +101,7 @@ export const ModalForm = ({
           onChange: ({ target: { value } }) => setCityInput(value),
         }}
       />
-      {/* <PhoneInput
-        phoneInputState={phoneInputState}
-        setPhoneInputState={(state: TPhoneInput) => {
-          setPhoneInputState(state);
-        }}
-      /> */}
+
       <PhoneInputAlt
         phoneInputState={phoneInputState}
         setPhoneInputState={(input: TPhoneInputAlt) => {

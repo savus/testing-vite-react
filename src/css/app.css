@@ -54,6 +54,43 @@ input.btn-primary {
   font-size: var(--size-20);
 }
 
+.full-body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+[data-dropdown] {
+  position: relative;
+}
+
+[data-dropdown] > .dropdown-menu {
+  --transition-speed: 150ms;
+  --translate-y: -20%;
+  --visibility: hidden;
+  --opacity: 0;
+  opacity: var(--opacity);
+  visibility: var(--visibility);
+  transform: translateY(var(--translate-y));
+  padding: var(--size-8) var(--size-12);
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+  position: absolute;
+  left: 0;
+  transition: opacity var(--transition-speed) ease-in-out,
+    transform var(--transition-speed) ease-in-out,
+    visibility var(--transition-speed) ease-in-out;
+}
+
+[data-dropdown].active > .dropdown-menu {
+  --translate-y: 0;
+  --visibility: visible;
+  --opacity: 1;
+}
+
 .modal-overlay {
   --opacity: 0;
   --visibility: hidden;
