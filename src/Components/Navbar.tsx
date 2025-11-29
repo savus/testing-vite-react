@@ -4,24 +4,23 @@ import type { TDropdownMenu, TVisibleModal } from "../types";
 
 type State = {
   activeLink: "form" | "menus" | "gallery" | "none";
-  activeDropdown: TDropdownMenu;
 };
 
 export class Navbar extends Component<{
   setVisibleModal: (modal: TVisibleModal) => void;
+  dropdownMenu: TDropdownMenu;
   setDropdownMenu: (menu: TDropdownMenu) => void;
 }> {
   state: State = {
     activeLink: "none",
-    activeDropdown: "none",
   };
 
   render() {
-    const { setVisibleModal, setDropdownMenu } = this.props;
-    const { activeLink, activeDropdown } = this.state;
+    const { setVisibleModal, dropdownMenu, setDropdownMenu } = this.props;
+    const { activeLink } = this.state;
 
-    const handleActive = (activeName: string, stateName: string) =>
-      activeName === stateName ? "active" : "";
+    const handleActive = (activeName: string, stateToCompare: string) =>
+      activeName === stateToCompare ? "active" : "";
 
     return (
       <>
@@ -38,17 +37,18 @@ export class Navbar extends Component<{
             </li>
             <div
               data-dropdown
-              className={`${handleActive("menus", activeDropdown)}`}
+              className={`${handleActive("menus", dropdownMenu)}`}
             >
               <li
                 data-dropdown-button=""
                 className={`${handleActive("menus", activeLink)}`}
                 onClick={() => {
+                  const toggleDropdown =
+                    dropdownMenu === "menus" ? "none" : "menus";
                   setVisibleModal("menus");
-                  setDropdownMenu("menus");
+                  setDropdownMenu(toggleDropdown);
                   this.setState({
                     activeLink: "menus",
-                    activeDropdown: "menus",
                   });
                 }}
               >
@@ -59,7 +59,7 @@ export class Navbar extends Component<{
               </div>
             </div>
             <li
-              className={`${handleActive("gallery")}`}
+              className={`${handleActive("gallery", activeLink)}`}
               onClick={() => {
                 setVisibleModal("gallery");
                 this.setState({ activeLink: "gallery" });

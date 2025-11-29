@@ -18,7 +18,7 @@ function App() {
       <div
         className="full-body"
         onClick={() => {
-          setDropdownMenu("none");
+          if (dropdownMenu != "none") setDropdownMenu("none");
         }}
       >
         <div className="container">
@@ -26,6 +26,7 @@ function App() {
             setVisibleModal={(modal: TVisibleModal) => {
               setVisibleModal(modal);
             }}
+            dropdownMenu={dropdownMenu}
             setDropdownMenu={(menu: TDropdownMenu) => {
               setDropdownMenu(menu);
             }}
