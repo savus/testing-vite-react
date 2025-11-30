@@ -1,5 +1,8 @@
 import "../css/modal-form.css";
-import { useNavbarStateContext } from "./NavbarStateProvider";
+import {
+  NavbarStateProvider,
+  useNavbarStateContext,
+} from "./Providers/NavbarStateProvider";
 
 export const ModalReact = ({
   children,

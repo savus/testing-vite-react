@@ -5,15 +5,12 @@ import { ErrorMessage } from "./ErrorMessage";
 import { isEmailValid, patterns, validate } from "../js/validations";
 import { PhoneInputAlt } from "./PhoneInputAlt";
 import type { TPhoneInputAlt } from "../types";
+import { useUserContext } from "./Providers/UserInformationProvider";
 
 const firstNameErrorMessage = "First name is invalid, please re enter";
 const lastNameErrorMessage = "Last name is invalid, please re enter";
 
-export const ModalForm = ({
-  setUserInformation,
-}: {
-  setUserInformation: (info: TUserInfo) => void;
-}) => {
+export const ModalForm = () => {
   const [firstNameInput, setFirstNameInput] = useState("");
   const [lastNameInput, setLastNameInput] = useState("");
   const [cityInput, setCityInput] = useState("");
@@ -34,6 +31,8 @@ export const ModalForm = ({
 
   const doBadInputsExist =
     !isFirstNameValid || !isLastNameValid || !phoneIsValid || !emailIsValid;
+
+  const { setUserInformation } = useUserContext();
   return (
     <form
       action="#"

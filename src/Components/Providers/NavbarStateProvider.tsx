@@ -1,12 +1,9 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
-import type { TDropdownMenu, TVisibleModal } from "../types";
-
-type TNavbarStateContext = {
-  visibleModal: TVisibleModal;
-  setVisibleModal: (modal: TVisibleModal) => void;
-  dropdownMenu: TDropdownMenu;
-  setDropdownMenu: (menu: TDropdownMenu) => void;
-};
+import type {
+  TDropdownMenu,
+  TNavbarStateContext,
+  TVisibleModal,
+} from "../../types";
 
 const NavbarStateContext = createContext<TNavbarStateContext>(
   {} as TNavbarStateContext

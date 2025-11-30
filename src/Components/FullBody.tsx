@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { useNavbarStateContext } from "./NavbarStateProvider";
+import { useNavbarStateContext } from "./Providers/NavbarStateProvider";
 
 export const FullBody = ({ children }: { children: ReactNode }) => {
   const { dropdownMenu, setDropdownMenu } = useNavbarStateContext();

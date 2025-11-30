@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "../css/navbar.css";
-import type { TDropdownMenu } from "../types";
-import { useNavbarStateContext } from "./NavbarStateProvider";
+import { useNavbarStateContext } from "./Providers/NavbarStateProvider";
 
 export const Navbar = () => {
   const [activeLink, setActiveLink] = useState("none");
