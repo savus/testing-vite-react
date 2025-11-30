@@ -6,9 +6,9 @@ export const FullBody = ({ children }: { children: ReactNode }) => {
   return (
     <div
       className="full-body"
-      onClick={() => {
-        if (dropdownMenu != "none") setDropdownMenu("none");
-      }}
+      // onClick={() => {
+      //   if (dropdownMenu != "none") setDropdownMenu("none");
+      // }}
     >
       {children}
     </div>
