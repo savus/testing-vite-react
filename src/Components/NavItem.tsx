@@ -1,4 +1,5 @@
-import { useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
+import { useNavbarStateContext } from "./Providers/NavbarStateProvider";
 
 export const NavItem = ({
   icon,
@@ -7,19 +8,20 @@ export const NavItem = ({
   icon: string;
   children?: ReactNode;
 }) => {
-  const [open, setOpen] = useState(false);
+  const { dropdownRef, dropdownMenu, setDropdownMenu } =
+    useNavbarStateContext();
   return (
-    <li className="nav-item">
+    <li className="nav-item" ref={dropdownRef}>
       <a
         href="#"
         className="icon-button"
         onClick={() => {
-          setOpen(!open);
+          setDropdownMenu("menus");
         }}
       >
         {icon}
       </a>
-      {open && children}
+      {dropdownMenu === "menus" && children}
     </li>
   );
 };

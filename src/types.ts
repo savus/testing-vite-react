@@ -1,4 +1,4 @@
-import type { ComponentProps } from "react";
+import type { ComponentProps, RefObject } from "react";
 
 export type TInputProps = ComponentProps<"input">;
 
@@ -11,6 +11,7 @@ export type TNavbarStateContext = {
   setVisibleModal: (modal: TVisibleModal) => void;
   dropdownMenu: TDropdownMenu;
   setDropdownMenu: (menu: TDropdownMenu) => void;
+  dropdownRef: RefObject<HTMLLIElement | null>;
 };
 
 export type TPhoneInput = [string, string, string];
