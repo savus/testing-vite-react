@@ -4,6 +4,9 @@
   --bg-form: #fff;
   --color-error: rgb(254, 88, 88);
   --error-txt: #000;
+  --bg: #242526;
+  --bg-accent: #484a4d;
+  --text-color: #dadce1;
 
   /*sizes*/
   --size-5: 0.3125rem;
@@ -14,6 +17,11 @@
   --size-50: 3.125rem;
   --size-100: 6.25rem;
   --size-320: 20rem;
+
+  /* properties */
+  --nav-size: 3.75rem;
+  --border: 1px solid var(--bg-accent);
+  --border-radius: var(--size-8);
 }
 
 body {
