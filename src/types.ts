@@ -16,3 +16,10 @@ export type TNavbarStateContext = {
   activeLink: TActiveLink;
   setActiveLink: (link: TActiveLink) => void;
 };
+
+export type TVisibleModal = "form" | "none";
+
+export type TModalContext = {
+  visibleModal: TVisibleModal;
+  setVisibleModal: (modal: TVisibleModal) => void;
+};

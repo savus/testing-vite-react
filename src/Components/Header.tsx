@@ -1,21 +1,33 @@
 import { DropdownMenu } from "./DropdownMenu";
 import { Navbar } from "./Navbar";
 import { NavItem } from "./NavItem";
+import { useModalContext } from "./Providers/ModalContextProvider";
 import { useNavbarStateContext } from "./Providers/NavbarContextProvider";
 
 export const Header = () => {
-  const { dropdownRef } = useNavbarStateContext();
+  const { dropdownMenu, setDropdownMenu, dropdownRef } =
+    useNavbarStateContext();
+  const { setVisibleModal } = useModalContext();
   return (
     <header className="main-header">
       <Navbar>
-        <NavItem text="Form" activeStateName="form" />
+        <NavItem
+          text="Form"
+          activeStateName="form"
+          onClick={() => {
+            setVisibleModal("form");
+          }}
+        />
         <NavItem
           text="Menus"
           activeStateName="menus"
-          dropdownMenuName="menus"
-          menuRef={dropdownRef}
+          onClick={() => {
+            const toggle = dropdownMenu === "menus" ? "none" : "menus";
+            setDropdownMenu(toggle);
+          }}
+          dropdownRef={dropdownRef}
         >
-          <DropdownMenu />
+          <DropdownMenu dropdownStateName="menus" />
         </NavItem>
         <NavItem text="Gallery" activeStateName="gallery" />
         <NavItem text="Animations" activeStateName="animations" />

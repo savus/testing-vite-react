@@ -1,5 +1,6 @@
 import { Header } from "./Components/Header.js";
 import { Modal } from "./Components/Modal.js";
+import { ModalContextProvider } from "./Components/Providers/ModalContextProvider.js";
 import { NavbarContextProvider } from "./Components/Providers/NavbarContextProvider.js";
 import "./css/index.css";
 import "./js/index.js";
@@ -7,12 +8,14 @@ import "./js/index.js";
 function App() {
   return (
     <>
-      <NavbarContextProvider>
-        <Header />
-        <Modal>
+      <ModalContextProvider>
+        <NavbarContextProvider>
+          <Header />
+        </NavbarContextProvider>
+        <Modal modalStateName="form">
           <div className="form-content">Content</div>
         </Modal>
-      </NavbarContextProvider>
+      </ModalContextProvider>
     </>
   );
 }
