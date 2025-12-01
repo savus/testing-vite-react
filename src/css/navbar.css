@@ -14,15 +14,15 @@
 .navbar .navbar-nav .nav-item {
   text-transform: uppercase;
   letter-spacing: 1px;
+  position: relative;
 }
 
 .navbar .navbar-nav .nav-item a {
   padding: 0.8rem 1rem;
   color: #000;
-  position: relative;
 }
 
-.nav-item .dropdown {
+.nav-item .dropdown-menu {
   --opacity: 0;
   --visibility: hidden;
   --top: 100%;
@@ -40,7 +40,7 @@
     top var(--transition-speed) ease-in-out;
 }
 
-.nav-item .dropdown.active {
+.nav-item .dropdown-menu.active {
   --opacity: 1;
   --visibility: visible;
   --top: 120%;
