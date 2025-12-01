@@ -1,0 +1,32 @@
+.navbar {
+  height: var(--nav-size);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 0px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .navbar-nav {
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.navbar .navbar-nav .nav-item {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.navbar .navbar-nav .nav-item a {
+  padding: 0.8rem 1rem;
+  color: #000;
+}
+
+.nav-item .dropdown {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 0.8rem 1.5rem;
+  box-shadow: 2px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  top: 100%;
+}
