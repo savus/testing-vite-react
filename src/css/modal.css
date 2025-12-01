@@ -1,0 +1,31 @@
+.modal-overlay {
+  --opacity: 0;
+  --visibility: hidden;
+  opacity: var(--opacity);
+  visibility: var(--visibility);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity var(--transition-speed) ease-in-out,
+    visibility var(--transition-speed) ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay.is-visible {
+  --opacity: 1;
+  --visibility: visible;
+}
+
+.modal-body {
+  width: 600px;
+  height: 500px;
+  margin-top: var(--size-100);
+  background-color: var(--bg-primary);
+  border-radius: var(--size-12);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+}

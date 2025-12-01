@@ -1,8 +1,9 @@
 :root {
   /* colors */
+  --bg-primary: #fff;
   --color-link: #3f65e3;
-  --bg-dark: #242526;
-  --bg-dark-accent: #484a4d;
+  --bg-secondary: #242526;
+  --bg-secondary-accent: #484a4d;
   --color-text-light: #dadce1;
 
   /* sizes */
