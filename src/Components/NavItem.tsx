@@ -1,34 +1,36 @@
 import type { ReactNode, RefObject } from "react";
-import { useDropdownContext } from "./Providers/DropdownMenuStateProvider";
-import { DropdownMenu } from "./DropdownMenu";
-import { useActiveLinkContext } from "./Providers/ActiveLinkProvider";
-import type { TActiveLink } from "../types";
+import type { TActiveLink, TDropdownMenu } from "../types";
+import { useNavbarStateContext } from "./Providers/NavbarContextProvider";
 
 export const NavItem = ({
   text,
   activeStateName,
+  dropdownMenuName = "none",
   children,
   menuRef,
 }: {
   text: string;
-  activeStatename: TActiveLink;
+  activeStateName: TActiveLink;
+  dropdownMenuName?: TDropdownMenu;
   children?: ReactNode;
   menuRef?: RefObject<HTMLLIElement | null>;
 }) => {
-  const { dropdownMenu, setDropdownMenu } = useDropdownContext();
-  const { activeLink, setActiveLink } = useActiveLinkContext();
-  const isLinkActive = (linkState: TActiveLink, currentState: TActiveLink) =>
-    linkState === currentState ? "active" : "";
+  const { activeLink, setActiveLink, setDropdownMenu, dropdownMenu } =
+    useNavbarStateContext();
+
+  const isLinkActive = (linkStateName: TActiveLink) =>
+    linkStateName === activeLink ? "active" : "";
 
   return (
     <li className="nav-item" ref={menuRef}>
       <a
-        className={isLinkActive(activeLink, activeStateName)}
+        className={isLinkActive(activeStateName)}
         href="#"
         onClick={() => {
-          // const toggleState = dropdownMenu === "menus" ? "none" : "menus";
-          // setDropdownMenu(toggleState);
-          setActiveLink("form");
+          const toggleMenu =
+            dropdownMenu === "none" ? dropdownMenuName : "none";
+          setDropdownMenu(toggleMenu);
+          setActiveLink(activeStateName);
         }}
       >
         {text}

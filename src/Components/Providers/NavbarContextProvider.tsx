@@ -6,19 +6,24 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import type { TDropdownContext, TDropdownMenu } from "../../types";
+import type {
+  TNavbarStateContext,
+  TDropdownMenu,
+  TActiveLink,
+} from "../../types";
 
-const DropdownStateContext = createContext<TDropdownContext>(
-  {} as TDropdownContext
+const NavbarStateContext = createContext<TNavbarStateContext>(
+  {} as TNavbarStateContext
 );
 
-export const DropdownMenuStateProvider = ({
+export const NavbarContextProvider = ({
   children,
 }: {
   children: ReactNode;
 }) => {
   const [dropdownMenu, setDropdownMenu] = useState<TDropdownMenu>("none");
   const dropdownRef = useRef<HTMLLIElement | null>(null);
+  const [activeLink, setActiveLink] = useState<TActiveLink>("none");
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -31,16 +36,18 @@ export const DropdownMenuStateProvider = ({
   }, []);
 
   return (
-    <DropdownStateContext.Provider
+    <NavbarStateContext.Provider
       value={{
         dropdownMenu,
         setDropdownMenu,
         dropdownRef,
+        activeLink,
+        setActiveLink,
       }}
     >
       {children}
-    </DropdownStateContext.Provider>
+    </NavbarStateContext.Provider>
   );
 };
 
-export const useDropdownContext = () => useContext(DropdownStateContext);
+export const useNavbarStateContext = () => useContext(NavbarStateContext);

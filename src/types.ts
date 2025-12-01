@@ -1,6 +1,6 @@
 import type { RefObject } from "react";
 
-export type TActiveLink = "form" | "menus" | "none";
+export type TActiveLink = "form" | "menus" | "gallery" | "animations" | "none";
 
 export type TActiveLinkContext = {
   activeLink: TActiveLink;
@@ -9,8 +9,10 @@ export type TActiveLinkContext = {
 
 export type TDropdownMenu = "menus" | "none";
 
-export type TDropdownContext = {
+export type TNavbarStateContext = {
   dropdownMenu: TDropdownMenu;
   setDropdownMenu: (menu: TDropdownMenu) => void;
   dropdownRef: RefObject<HTMLLIElement | null>;
+  activeLink: TActiveLink;
+  setActiveLink: (link: TActiveLink) => void;
 };

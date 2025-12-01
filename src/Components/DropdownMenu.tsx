@@ -1,8 +1,8 @@
 import type { TDropdownMenu } from "../types";
-import { useDropdownContext } from "./Providers/DropdownMenuStateProvider";
+import { useNavbarStateContext } from "./Providers/NavbarContextProvider";
 
 export const DropdownMenu = () => {
-  const { dropdownMenu } = useDropdownContext();
+  const { dropdownMenu } = useNavbarStateContext();
   const isMenuActive = (
     menuState: TDropdownMenu,
     currentState: TDropdownMenu
