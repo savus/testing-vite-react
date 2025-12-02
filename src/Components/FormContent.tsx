@@ -14,13 +14,24 @@ export const FormContent = () => {
   const [emailInput, setEmailInput] = useState("");
   const [cityInput, setCityInput] = useState("");
   const [phoneInput, setPhoneInput] = useState<TPhoneInput>(["", "", ""]);
+
+  const [hasSubmitted, setHasSubmitted] = useState(false);
   return (
     <form
       className="form-content"
       action="#"
       onSubmit={(e) => {
         e.preventDefault();
-        console.log(firstNameInput, lastNameInput, emailInput, cityInput);
+        setHasSubmitted(true);
+        if (hasSubmitted) {
+          setUserInformation({
+            firstName: firstNameInput,
+            lastName: lastNameInput,
+            city: cityInput,
+            email: emailInput,
+            phone: phoneInput.join(""),
+          });
+        }
       }}
     >
       <TextInput
@@ -72,9 +83,9 @@ export const FormContent = () => {
       />
 
       <PhoneInput
-        phoneInput={phoneInput}
-        setPhoneInput={(info) => {
-          setPhoneInput(input);
+        phoneInputState={phoneInput}
+        setPhoneInputState={(info) => {
+          setPhoneInput(info);
         }}
       />
 
