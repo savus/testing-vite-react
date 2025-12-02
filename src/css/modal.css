@@ -45,7 +45,7 @@
   font-size: var(--size-30);
   position: absolute;
   right: 5%;
-  top: 5%;
+  top: 3%;
   transform: scale(var(--scale));
   transition: transform var(--speed) ease-in-out;
 }

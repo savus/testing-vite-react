@@ -68,3 +68,9 @@ input {
   padding: 0.8rem 2.5rem;
   border-radius: var(--size-30);
 }
+
+.error-message {
+  color: red;
+  text-align: center;
+  letter-spacing: 1px;
+}

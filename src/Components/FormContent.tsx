@@ -5,6 +5,22 @@ import { PhoneInput } from "./PhoneInput";
 import { useUserContext } from "./Providers/UserInfoProvider";
 import { useState } from "react";
 import type { TPhoneInput } from "../types";
+import { ErrorMessage } from "./ErrorMessage";
+import { isValid } from "../validations";
+
+const firstNameErrorMessage =
+  "First name must be at least alphanumeric with at least 2 characters and no spaces";
+
+const lastNameErrorMessage =
+  "Last name must be at least alphanumeric with at least 2 characters and no spaces";
+
+const emailErrorMessage = "Must be a valid email address";
+
+const cityErrorMessage =
+  "City must be alphanumeric with at least 2 characters, no spaces, and no special characters";
+
+const phoneErrorMessage =
+  "phone must be numbers, no spaces, and no special characters";
 
 export const FormContent = () => {
   const { userInformation, setUserInformation } = useUserContext();
@@ -14,8 +30,22 @@ export const FormContent = () => {
   const [emailInput, setEmailInput] = useState("");
   const [cityInput, setCityInput] = useState("");
   const [phoneInput, setPhoneInput] = useState<TPhoneInput>(["", "", ""]);
+  const joinedPhoneInput = phoneInput.join("");
 
   const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  const isFirstNameValid = isValid("name", firstNameInput);
+  const isLastNameValid = isValid("name", lastNameInput);
+  const isEmailValid = isValid("email", emailInput);
+  const isCityValid = isValid("name", cityInput);
+  const isPhoneValid = isValid("phone", joinedPhoneInput);
+
+  const showFirstNameError = hasSubmitted && !isFirstNameValid;
+  const showLastNameError = hasSubmitted && !isLastNameValid;
+  const showEmailError = hasSubmitted && !isEmailValid;
+  const showCityError = hasSubmitted && !isCityValid;
+  const showPhoneError = hasSubmitted && !isPhoneValid;
+
   return (
     <form
       className="form-content"
@@ -31,6 +61,7 @@ export const FormContent = () => {
             email: emailInput,
             phone: phoneInput.join(""),
           });
+          console.log(userInformation);
         }
       }}
     >
@@ -45,7 +76,7 @@ export const FormContent = () => {
           onChange: ({ target: { value } }) => setFirstNameInput(value),
         }}
       />
-
+      {showFirstNameError && <ErrorMessage text={firstNameErrorMessage} />}
       <TextInput
         labelText="Last Name"
         labelFor="last-name"
@@ -57,6 +88,7 @@ export const FormContent = () => {
           onChange: ({ target: { value } }) => setLastNameInput(value),
         }}
       />
+      {showLastNameError && <ErrorMessage text={lastNameErrorMessage} />}
 
       <TextInput
         labelText="Email"
@@ -69,6 +101,7 @@ export const FormContent = () => {
           onChange: ({ target: { value } }) => setEmailInput(value),
         }}
       />
+      {showEmailError && <ErrorMessage text={emailErrorMessage} />}
 
       <TextInput
         labelText="City"
@@ -81,6 +114,7 @@ export const FormContent = () => {
           onChange: ({ target: { value } }) => setCityInput(value),
         }}
       />
+      {showCityError && <ErrorMessage text={cityErrorMessage} />}
 
       <PhoneInput
         phoneInputState={phoneInput}
@@ -88,6 +122,7 @@ export const FormContent = () => {
           setPhoneInput(info);
         }}
       />
+      {showPhoneError && <ErrorMessage text={phoneErrorMessage} />}
 
       <SubmitButton />
     </form>

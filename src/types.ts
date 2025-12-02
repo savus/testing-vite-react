@@ -40,3 +40,7 @@ export type TUserInformation = {
 };
 
 export type TPhoneInput = [string, string, string];
+
+export type TRegexPatterns = {
+  [key: string]: RegExp;
+};
