@@ -1,4 +1,4 @@
-import type { RefObject } from "react";
+import type { ComponentProps, RefObject } from "react";
 
 export type TActiveLink = "form" | "menus" | "gallery" | "animations" | "none";
 
@@ -23,3 +23,5 @@ export type TModalContext = {
   visibleModal: TVisibleModal;
   setVisibleModal: (modal: TVisibleModal) => void;
 };
+
+export type TInputProps = ComponentProps<"input">;

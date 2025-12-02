@@ -1,3 +1,4 @@
+import { FormContent } from "./Components/FormContent.js";
 import { Header } from "./Components/Header.js";
 import { Modal } from "./Components/Modal.js";
 import { ModalContextProvider } from "./Components/Providers/ModalContextProvider.js";
@@ -12,8 +13,8 @@ function App() {
         <NavbarContextProvider>
           <Header />
         </NavbarContextProvider>
-        <Modal modalStateName="form">
-          <div className="form-content">Content</div>
+        <Modal header="Form" modalStateName="form">
+          <FormContent />
         </Modal>
       </ModalContextProvider>
     </>

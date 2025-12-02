@@ -3,7 +3,7 @@
   --visibility: hidden;
   opacity: var(--opacity);
   visibility: var(--visibility);
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -14,6 +14,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 .modal-overlay.is-visible {
@@ -23,9 +25,32 @@
 
 .modal-body {
   width: 600px;
-  height: 500px;
-  margin-top: var(--size-100);
   background-color: var(--bg-primary);
   border-radius: var(--size-12);
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.modal-body .modal-header {
+  text-align: center;
+  font-size: var(--size-30);
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  /* margin-bottom: var(--size-30); */
+}
+
+.modal-body .close-button {
+  --scale: 1;
+  --speed: calc(var(--transition-speed) * 1.5);
+  font-size: var(--size-30);
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  transform: scale(var(--scale));
+  transition: transform var(--speed) ease-in-out;
+}
+
+.modal-body .close-button:hover {
+  --scale: 1.5;
+  cursor: pointer;
 }
