@@ -25,3 +25,18 @@ export type TModalContext = {
 };
 
 export type TInputProps = ComponentProps<"input">;
+
+export type TUserInfo = {
+  firstName: string;
+  lastName: string;
+  city: string;
+  email: string;
+  phone: string;
+};
+
+export type TUserInformation = {
+  userInformation: TUserInfo | null;
+  setUserInformation: (info: TUserInfo) => void;
+};
+
+export type TPhoneInput = [string, string, string];
