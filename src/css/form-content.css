@@ -16,18 +16,34 @@
   letter-spacing: 0.5px;
 }
 
-.input-container input {
+.input-container input,
+.phone-input-container input {
   --padding: var(--size-12);
-  --width: calc(24rem + var(--padding));
+  --width: 0;
   display: inline-flex;
-  width: var(--width);
   padding: var(--padding);
-  margin-left: var(--size-16);
+  width: var(--width);
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.6);
   box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
   font-size: var(--size-16);
   color: #000;
+}
+
+.input-container input {
+  --width: calc(24rem + var(--padding));
+  margin-left: var(--size-16);
+}
+
+.phone-input-container {
+  display: flex;
+  align-items: center;
+  gap: var(--size-10);
+  margin: 1rem 0;
+}
+
+.phone-input-container input {
+  --width: calc(var(--size-50) + 2rem);
 }
 
 .form-content .submit-container {

@@ -42,6 +42,7 @@ export const FormContent = () => {
         }}
       />
       <div className="phone-input-container">
+        <label htmlFor="phone-input">Phone:</label>
         <input type="text" />
         -
         <input type="text" />
