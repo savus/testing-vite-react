@@ -37,3 +37,28 @@
   padding: 12px 30px 12px 8px;
   font-size: var(--size-20);
 }
+
+.portfolio-grid {
+  display: flex;
+  gap: var(--size-12);
+  flex-wrap: wrap;
+  padding-top: var(--size-20);
+}
+
+.portfolio-grid .portfolio-card {
+  --card-size: 255px;
+  width: var(--card-size);
+  height: var(--card-size);
+  background-color: red;
+}
+
+.portfolio-grid .portfolio-card,
+.portfolio-grid .portfolio-card img {
+  border-radius: 10px;
+}
+
+.portfolio-grid .portfolio-card img {
+  width: 100%;
+  height: var(--card-size);
+  object-fit: cover;
+}

@@ -1,4 +1,5 @@
 import "../css/portfolio-section.css";
+import { Images } from "../Images";
 
 export const PortfolioSection = () => {
   return (
@@ -19,7 +20,35 @@ export const PortfolioSection = () => {
       </div>
       <div className="portfolio-grid">
         <div className="portfolio-card">
-          <img src="" alt="" />
+          <img src={Images.Image1} alt="" />
+          <div className="popup-box"></div>
+        </div>
+        <div className="portfolio-card">
+          <img src={Images.Image1} alt="" />
+          <div className="popup-box"></div>
+        </div>
+        <div className="portfolio-card">
+          <img src={Images.Image1} alt="" />
+          <div className="popup-box"></div>
+        </div>
+        <div className="portfolio-card">
+          <img src={Images.Image1} alt="" />
+          <div className="popup-box"></div>
+        </div>
+        <div className="portfolio-card">
+          <img src={Images.Image1} alt="" />
+          <div className="popup-box"></div>
+        </div>
+        <div className="portfolio-card">
+          <img src={Images.Image1} alt="" />
+          <div className="popup-box"></div>
+        </div>
+        <div className="portfolio-card">
+          <img src={Images.Image1} alt="" />
+          <div className="popup-box"></div>
+        </div>
+        <div className="portfolio-card">
+          <img src={Images.Image1} alt="" />
           <div className="popup-box"></div>
         </div>
       </div>
