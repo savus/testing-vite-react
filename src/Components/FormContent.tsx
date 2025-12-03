@@ -89,7 +89,6 @@ export const FormContent = () => {
         }}
       />
       {showLastNameError && <ErrorMessage text={lastNameErrorMessage} />}
-
       <TextInput
         labelText="Email"
         labelFor="email"
@@ -102,7 +101,6 @@ export const FormContent = () => {
         }}
       />
       {showEmailError && <ErrorMessage text={emailErrorMessage} />}
-
       <TextInput
         labelText="City"
         labelFor="city"
@@ -115,7 +113,6 @@ export const FormContent = () => {
         }}
       />
       {showCityError && <ErrorMessage text={cityErrorMessage} />}
-
       <PhoneInput
         phoneInputState={phoneInput}
         setPhoneInputState={(info) => {
@@ -123,7 +120,6 @@ export const FormContent = () => {
         }}
       />
       {showPhoneError && <ErrorMessage text={phoneErrorMessage} />}
-
       <SubmitButton />
     </form>
   );

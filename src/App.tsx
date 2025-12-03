@@ -14,10 +14,10 @@ function App() {
         <ModalContextProvider>
           <NavbarContextProvider>
             <Header />
+            <Modal header="Form" modalStateName="form">
+              <FormContent />
+            </Modal>
           </NavbarContextProvider>
-          <Modal header="Form" modalStateName="form">
-            <FormContent />
-          </Modal>
         </ModalContextProvider>
       </UserInfoProvider>
     </>

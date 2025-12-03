@@ -17,9 +17,7 @@ export const Modal = ({
   const isModalVisible = (stateName: TVisibleModal) =>
     stateName === visibleModal ? "is-visible" : "";
   return (
-    <div
-      className={`modal-overlay is-visible ${isModalVisible(modalStateName)}`}
-    >
+    <div className={`modal-overlay ${isModalVisible(modalStateName)}`}>
       <div className="modal-body">
         <ModalCloseButton />
         <div className="modal-header">{header}</div>
