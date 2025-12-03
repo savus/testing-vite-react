@@ -1,0 +1,39 @@
+.portfolio-section {
+  padding: 1rem;
+}
+
+.portfolio-section h2 {
+  display: flex;
+  justify-content: center;
+}
+
+.portfolio-section .search-container,
+.portfolio-section .portfolio-filter-nav {
+  gap: var(--size-20);
+}
+
+.portfolio-section .search-container,
+.portfolio-section label,
+.portfolio-section .portfolio-filter-nav {
+  display: flex;
+  align-items: center;
+}
+
+.portfolio-section label {
+  position: relative;
+}
+
+.portfolio-section label i {
+  position: absolute;
+  right: 5%;
+}
+
+.search-container #search {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 40px;
+  width: 200px;
+  padding: 12px 30px 12px 8px;
+  font-size: var(--size-20);
+}
