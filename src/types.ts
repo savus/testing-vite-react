@@ -17,6 +17,18 @@ export type TNavbarStateContext = {
   setActiveLink: (link: TActiveLink) => void;
 };
 
+export type TFilterLink = "all" | "web" | "app" | "ui" | "none";
+
+export type TFilterContext = {
+  activeFilterLink: TFilterLink;
+  setActiveFilterLink: (link: TFilterLink) => void;
+};
+
+export type TPortfolioCard = {
+  img: string;
+  popupText: string;
+};
+
 export type TVisibleModal = "form" | "none";
 
 export type TModalContext = {

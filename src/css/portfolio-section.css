@@ -38,6 +38,15 @@
   font-size: var(--size-20);
 }
 
+.portfolio-filter-nav .filter-link {
+  cursor: pointer;
+}
+
+.portfolio-filter-nav .filter-link.active,
+.portfolio-filter-nav .filter-link:hover {
+  color: var(--color-link);
+}
+
 .portfolio-grid {
   display: flex;
   gap: var(--size-12);
