@@ -24,9 +24,13 @@ export type TFilterContext = {
   setActiveFilterLink: (link: TFilterLink) => void;
 };
 
+export type TPortfolioFilter = "web" | "app" | "ui";
+
 export type TPortfolioCard = {
   img: string;
+  popupHeader: string;
   popupText: string;
+  filter: TPortfolioFilter;
 };
 
 export type TVisibleModal = "form" | "none";

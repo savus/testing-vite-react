@@ -11,35 +11,51 @@ export const FilterContext = createContext({} as TFilterContext);
 const portfolioCards: TPortfolioCard[] = [
   {
     img: Images.Image1,
-    popupText: "Web Development",
+    popupHeader: "Web Development",
+    popupText: "Skate website",
+    filter: "web",
   },
   {
-    img: Images.Image1,
-    popupText: "Web Development",
+    img: Images.Image2,
+    popupHeader: "Web Development",
+    popupText: "Eating Website",
+    filter: "web",
   },
   {
-    img: Images.Image1,
-    popupText: "Web Development",
+    img: Images.Image3,
+    popupHeader: "Web Development",
+    popupText: "Food Website",
+    filter: "web",
   },
   {
-    img: Images.Image1,
-    popupText: "Web Development",
+    img: Images.Image4,
+    popupHeader: "App Development",
+    popupText: "Game App",
+    filter: "app",
   },
   {
-    img: Images.Image1,
-    popupText: "Web Development",
+    img: Images.Image5,
+    popupHeader: "App Development",
+    popupText: "Gambling App",
+    filter: "app",
   },
   {
-    img: Images.Image1,
-    popupText: "Web Development",
+    img: Images.Image6,
+    popupHeader: "App Development",
+    popupText: "Money Website",
+    filter: "ui",
   },
   {
-    img: Images.Image1,
-    popupText: "Web Development",
+    img: Images.Image7,
+    popupHeader: "UI Design",
+    popupText: "Fantastic Design",
+    filter: "ui",
   },
   {
-    img: Images.Image1,
+    img: Images.Image8,
+    popupHeader: "Header",
     popupText: "Web Development",
+    filter: "ui",
   },
 ];
 
@@ -91,7 +107,7 @@ export const PortfolioSection = () => {
       </div>
       <div className="portfolio-grid">
         {portfolioCards.map((card) => (
-          <PortfolioCard image={card.img} popupText={card.popupText} />
+          <PortfolioCard cardData={card} />
         ))}
       </div>
     </section>
