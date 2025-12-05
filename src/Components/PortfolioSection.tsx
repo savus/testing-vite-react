@@ -61,13 +61,37 @@ const portfolioCards: TPortfolioCard[] = [
 
 export const PortfolioSection = () => {
   const [activeFilterLink, setActiveFilterLink] = useState<TFilterLink>("none");
+  const [searchInput, setSearchInput] = useState("");
+
+  const onChangeHandler = (value: string) => {
+    setActiveFilterLink("none");
+    setSearchInput(value);
+  };
+
+  const onClickHandler = (stateName: TFilterLink) => {
+    setActiveFilterLink(stateName);
+    setSearchInput("");
+  };
+
+  const filteredCards = portfolioCards.filter((card) => {
+    if (searchInput === "all" || activeFilterLink === "all") return true;
+    else if (searchInput === card.filter || activeFilterLink === card.filter)
+      return true;
+    else return false;
+  });
 
   return (
     <section className="portfolio-section container">
       <h2>Portfolio</h2>
       <div className="search-container">
         <label htmlFor="search">
-          <input type="text" placeholder="search" id="search" />
+          <input
+            type="text"
+            placeholder="search"
+            id="search"
+            value={searchInput}
+            onChange={({ target: { value } }) => onChangeHandler(value)}
+          />
           <i className="fa-solid fa-magnifying-glass"></i>
         </label>
         <PortfolioFilterNav>
@@ -75,39 +99,31 @@ export const PortfolioSection = () => {
             text={"All Work"}
             activeLinkName="all"
             activeFilterLink={activeFilterLink}
-            onClick={() => {
-              setActiveFilterLink("all");
-            }}
+            onClick={() => onClickHandler("all")}
           />
           <FilterLink
             text={"Web Development"}
             activeLinkName="web"
             activeFilterLink={activeFilterLink}
-            onClick={() => {
-              setActiveFilterLink("web");
-            }}
+            onClick={() => onClickHandler("web")}
           />
           <FilterLink
             text={"App Development"}
             activeLinkName="app"
             activeFilterLink={activeFilterLink}
-            onClick={() => {
-              setActiveFilterLink("app");
-            }}
+            onClick={() => onClickHandler("app")}
           />
           <FilterLink
             text={"Ui Design"}
             activeLinkName="ui"
             activeFilterLink={activeFilterLink}
-            onClick={() => {
-              setActiveFilterLink("ui");
-            }}
+            onClick={() => onClickHandler("ui")}
           />
         </PortfolioFilterNav>
       </div>
       <div className="portfolio-grid">
-        {portfolioCards.map((card) => (
-          <PortfolioCard cardData={card} />
+        {filteredCards.map((card, index) => (
+          <PortfolioCard key={index} cardData={card} />
         ))}
       </div>
     </section>

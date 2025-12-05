@@ -61,7 +61,7 @@
 
 .portfolio-grid .portfolio-card {
   --card-size: 255px;
-  max-width: var(--card-size);
+  width: var(--card-size);
   height: var(--card-size);
   background-color: red;
   position: relative;
