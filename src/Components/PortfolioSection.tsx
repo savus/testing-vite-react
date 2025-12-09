@@ -74,10 +74,14 @@ export const PortfolioSection = () => {
   };
 
   const filteredCards = portfolioCards.filter((card) => {
-    if (searchInput === "all" || activeFilterLink === "all") return true;
-    else if (searchInput === card.filter || activeFilterLink === card.filter)
-      return true;
-    else return false;
+    const shouldShowCard = () => {
+      if (searchInput.length === 0 && activeFilterLink === "none") return true;
+      else if (searchInput === "all" || activeFilterLink === "all") return true;
+      else if (searchInput === card.filter || activeFilterLink === card.filter)
+        return true;
+      else return false;
+    };
+    return shouldShowCard();
   });
 
   return (
