@@ -1,4 +1,4 @@
-import type { TRegexPatterns } from "./types";
+import type { TRegexPatterns } from "../types";
 
 export const regexPatterns: TRegexPatterns = {
   name: /^([a-zA-Z]{2,20})([ ]*)?$/,

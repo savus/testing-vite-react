@@ -2,12 +2,11 @@ import { SubmitButton } from "./SubmitButton";
 import { TextInput } from "./TextInput";
 import "../css/form-content.css";
 import { PhoneInput } from "./PhoneInput";
-import { useUserContext } from "./Providers/UserInfoProvider";
 import { useState } from "react";
 import type { TPhoneInput } from "../types";
 import { ErrorMessage } from "./ErrorMessage";
-import { isValid } from "../validations";
-import { allCities } from "../allCities";
+import { isValid } from "../utils/validations";
+import { allCities } from "../utils/allCities";
 
 const firstNameErrorMessage =
   "First name must be at least alphanumeric with at least 2 characters and no spaces";
@@ -23,9 +22,6 @@ const phoneErrorMessage =
   "phone must be numbers, no spaces, and no special characters";
 
 export const FormContent = () => {
-  const { userInformation, setUserInformation, allUsers, createUser } =
-    useUserContext();
-
   const [firstNameInput, setFirstNameInput] = useState("");
   const [lastNameInput, setLastNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
@@ -63,20 +59,6 @@ export const FormContent = () => {
         e.preventDefault();
         setHasSubmitted(true);
         if (hasSubmitted) {
-          setUserInformation({
-            firstName: firstNameInput,
-            lastName: lastNameInput,
-            city: cityInput,
-            email: emailInput,
-            phone: phoneInput.join(""),
-          });
-          createUser({
-            firstName: firstNameInput,
-            lastName: lastNameInput,
-            city: cityInput,
-            email: emailInput,
-            phone: phoneInput.join(""),
-          });
           resetInputValues();
         }
       }}
