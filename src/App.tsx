@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { FormContent } from "./Components/FormContent.js";
 import { Header } from "./Components/Header.js";
 import { Modal } from "./Components/Modal.js";
@@ -7,7 +8,6 @@ import { NavbarContextProvider } from "./Components/Providers/NavbarContextProvi
 import { UserInfoProvider } from "./Components/Providers/UserInfoProvider.js";
 import "./css/index.css";
 import "./js/index.js";
-
 function App() {
   return (
     <>

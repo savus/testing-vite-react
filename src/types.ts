@@ -42,7 +42,8 @@ export type TModalContext = {
 
 export type TInputProps = ComponentProps<"input">;
 
-export type TUserInfo = {
+export type TUser = {
+  id: number;
   firstName: string;
   lastName: string;
   city: string;
@@ -51,12 +52,21 @@ export type TUserInfo = {
 };
 
 export type TUserInformation = {
-  userInformation: TUserInfo | null;
-  setUserInformation: (info: TUserInfo) => void;
+  allUsers: TUser[];
+  setAllUsers: (users: TUser[]) => void;
+  userInformation: Omit<TUser, "id"> | null;
+  setUserInformation: (info: Omit<TUser, "id">) => void;
+  createUser: (user: Omit<TUser, "id">) => void;
 };
 
 export type TPhoneInput = [string, string, string];
 
 export type TRegexPatterns = {
   [key: string]: RegExp;
+};
+
+export type TNote = {
+  id: number;
+  title: string;
+  content: string;
 };

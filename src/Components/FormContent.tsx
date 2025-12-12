@@ -7,6 +7,7 @@ import { useState } from "react";
 import type { TPhoneInput } from "../types";
 import { ErrorMessage } from "./ErrorMessage";
 import { isValid } from "../validations";
+import { allCities } from "../allCities";
 
 const firstNameErrorMessage =
   "First name must be at least alphanumeric with at least 2 characters and no spaces";
@@ -16,14 +17,14 @@ const lastNameErrorMessage =
 
 const emailErrorMessage = "Must be a valid email address";
 
-const cityErrorMessage =
-  "City must be alphanumeric with at least 2 characters, no spaces, and no special characters";
+const cityErrorMessage = "City must be alphanumeric with at least 2 characters";
 
 const phoneErrorMessage =
   "phone must be numbers, no spaces, and no special characters";
 
 export const FormContent = () => {
-  const { userInformation, setUserInformation } = useUserContext();
+  const { userInformation, setUserInformation, allUsers, createUser } =
+    useUserContext();
 
   const [firstNameInput, setFirstNameInput] = useState("");
   const [lastNameInput, setLastNameInput] = useState("");
@@ -37,7 +38,7 @@ export const FormContent = () => {
   const isFirstNameValid = isValid("name", firstNameInput);
   const isLastNameValid = isValid("name", lastNameInput);
   const isEmailValid = isValid("email", emailInput);
-  const isCityValid = isValid("name", cityInput);
+  const isCityValid = isValid("city", cityInput);
   const isPhoneValid = isValid("phone", joinedPhoneInput);
 
   const showFirstNameError = hasSubmitted && !isFirstNameValid;
@@ -45,6 +46,14 @@ export const FormContent = () => {
   const showEmailError = hasSubmitted && !isEmailValid;
   const showCityError = hasSubmitted && !isCityValid;
   const showPhoneError = hasSubmitted && !isPhoneValid;
+
+  const resetInputValues = () => {
+    setFirstNameInput("");
+    setLastNameInput("");
+    setEmailInput("");
+    setCityInput("");
+    setPhoneInput(["", "", ""]);
+  };
 
   return (
     <form
@@ -61,7 +70,14 @@ export const FormContent = () => {
             email: emailInput,
             phone: phoneInput.join(""),
           });
-          console.log(userInformation);
+          createUser({
+            firstName: firstNameInput,
+            lastName: lastNameInput,
+            city: cityInput,
+            email: emailInput,
+            phone: phoneInput.join(""),
+          });
+          resetInputValues();
         }
       }}
     >
@@ -108,6 +124,7 @@ export const FormContent = () => {
           id: "city",
           type: "text",
           placeholder: "city ex. Hobbiton",
+          list: "cities",
           value: cityInput,
           onChange: ({ target: { value } }) => setCityInput(value),
         }}
@@ -121,6 +138,11 @@ export const FormContent = () => {
       />
       {showPhoneError && <ErrorMessage text={phoneErrorMessage} />}
       <SubmitButton />
+      <datalist id="cities">
+        {allCities.map((city, index) => (
+          <option key={index}>{city}</option>
+        ))}
+      </datalist>
     </form>
   );
 };

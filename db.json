@@ -1,0 +1,66 @@
+{
+  "notes": [
+    {
+      "id": "1",
+      "title": "My First Note",
+      "content": "I really love pizza"
+    },
+    {
+      "id": "2",
+      "title": "My Second Note",
+      "content": "Seriously i'ts kind of a problems"
+    },
+    {
+      "id": "3",
+      "title": "Note 4",
+      "content": "I'm note 4"
+    },
+    {
+      "id": "4",
+      "title": "Some stuff to test with",
+      "content": "And then some stuff"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "firstName": "Boferton",
+      "lastName": "Boffin",
+      "city": "Hobbiton",
+      "email": "m@hotmail.com",
+      "phone": "5555555555"
+    },
+    {
+      "id": "4c44",
+      "firstName": "user",
+      "lastName": "werwer",
+      "city": "meowmi",
+      "email": "fwer.jserwer@gmail.com",
+      "phone": "1111111111"
+    },
+    {
+      "id": "1bbe",
+      "firstName": "justin",
+      "lastName": "clemons",
+      "city": "Dumpsville",
+      "email": "justin.fuzzygreenstuff@gmail.com",
+      "phone": "1111111111"
+    },
+    {
+      "id": "6c30",
+      "firstName": "fw",
+      "lastName": "ew",
+      "city": "joi",
+      "email": "fwerwe@gail.com",
+      "phone": "2222222222"
+    },
+    {
+      "id": "e03f",
+      "firstName": "las",
+      "lastName": "mess",
+      "city": "hobbiton",
+      "email": "justin.fuzzygreenstuff@gmail.com",
+      "phone": "0101010101"
+    }
+  ]
+}
