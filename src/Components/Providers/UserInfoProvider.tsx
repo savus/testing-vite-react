@@ -14,14 +14,14 @@ export const UserInfoProvider = ({ children }: { children: ReactNode }) => {
   const [allUsers, setAllUsers] = useState<TUser[]>([]);
   const [activeUser, setActiveUser] = useState<Omit<TUser, "id"> | null>(null);
 
+  const refetchData = () => Requests.getAllUsers().then(setAllUsers);
+
   useEffect(() => {
-    Requests.getAllUsers().then(setAllUsers);
+    refetchData();
   }, []);
 
   const createUser = (body: Omit<TUser, "id">) => {
-    return Requests.postUser(body).then(() => {
-      Requests.getAllUsers().then(setAllUsers);
-    });
+    return Requests.postUser(body).then(refetchData);
   };
 
   return (
