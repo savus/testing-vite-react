@@ -3,11 +3,13 @@ import { Navbar } from "./Navbar";
 import { NavItem } from "./NavItem";
 import { useModalContext } from "./Providers/ModalContextProvider";
 import { useNavbarStateContext } from "./Providers/NavbarContextProvider";
+import { useUserContext } from "./Providers/UserInfoProvider";
 
 export const Header = () => {
   const { dropdownMenu, setDropdownMenu, dropdownRef } =
     useNavbarStateContext();
   const { setVisibleModal } = useModalContext();
+  const { allUsers } = useUserContext();
   return (
     <header className="main-header">
       <Navbar>
@@ -34,7 +36,13 @@ export const Header = () => {
       </Navbar>
       <div>
         Users:
-        <ul></ul>
+        <ul>
+          {allUsers.map((user, index) => (
+            <li key={index}>
+              {user.firstName}:{user.lastName}
+            </li>
+          ))}
+        </ul>
       </div>
       <div>Active User:</div>
     </header>

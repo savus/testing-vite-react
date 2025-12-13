@@ -7,6 +7,7 @@ import type { TPhoneInput } from "../types";
 import { ErrorMessage } from "./ErrorMessage";
 import { isValid } from "../utils/validations";
 import { allCities } from "../utils/allCities";
+import { useUserContext } from "./Providers/UserInfoProvider";
 
 const firstNameErrorMessage =
   "First name must be at least alphanumeric with at least 2 characters and no spaces";
@@ -22,6 +23,7 @@ const phoneErrorMessage =
   "phone must be numbers, no spaces, and no special characters";
 
 export const FormContent = () => {
+  const { setActiveUser, createUser } = useUserContext();
   const [firstNameInput, setFirstNameInput] = useState("");
   const [lastNameInput, setLastNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
@@ -36,6 +38,13 @@ export const FormContent = () => {
   const isEmailValid = isValid("email", emailInput);
   const isCityValid = isValid("city", cityInput);
   const isPhoneValid = isValid("phone", joinedPhoneInput);
+
+  const doBadInputsExist =
+    !isFirstNameValid ||
+    !isLastNameValid ||
+    !isCityValid ||
+    !isEmailValid ||
+    !isPhoneValid;
 
   const showFirstNameError = hasSubmitted && !isFirstNameValid;
   const showLastNameError = hasSubmitted && !isLastNameValid;
@@ -58,7 +67,21 @@ export const FormContent = () => {
       onSubmit={(e) => {
         e.preventDefault();
         setHasSubmitted(true);
-        if (hasSubmitted) {
+        if (!doBadInputsExist) {
+          setActiveUser({
+            firstName: firstNameInput,
+            lastName: lastNameInput,
+            email: emailInput,
+            city: cityInput,
+            phone: phoneInput.join(""),
+          });
+          createUser({
+            firstName: firstNameInput,
+            lastName: lastNameInput,
+            email: emailInput,
+            city: cityInput,
+            phone: phoneInput.join(""),
+          });
           resetInputValues();
         }
       }}

@@ -4,20 +4,22 @@ import { Modal } from "./Components/Modal.js";
 import { PortfolioSection } from "./Components/PortfolioSection.js";
 import { ModalContextProvider } from "./Components/Providers/ModalContextProvider.js";
 import { NavbarContextProvider } from "./Components/Providers/NavbarContextProvider.js";
+import { UserInfoProvider } from "./Components/Providers/UserInfoProvider.js";
 import "./css/index.css";
-import "./js/index.js";
 function App() {
   return (
     <>
-      <ModalContextProvider>
-        <NavbarContextProvider>
-          <Header />
-          <PortfolioSection />
-          <Modal header="Form" modalStateName="form">
-            <FormContent />
-          </Modal>
-        </NavbarContextProvider>
-      </ModalContextProvider>
+      <UserInfoProvider>
+        <ModalContextProvider>
+          <NavbarContextProvider>
+            <Header />
+            <PortfolioSection />
+            <Modal header="Form" modalStateName="form">
+              <FormContent />
+            </Modal>
+          </NavbarContextProvider>
+        </ModalContextProvider>
+      </UserInfoProvider>
     </>
   );
 }

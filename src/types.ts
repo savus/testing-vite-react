@@ -51,11 +51,11 @@ export type TUser = {
   phone: string;
 };
 
-export type TUserInformation = {
+export type TUserContext = {
   allUsers: TUser[];
   setAllUsers: (users: TUser[]) => void;
-  userInformation: Omit<TUser, "id"> | null;
-  setUserInformation: (info: Omit<TUser, "id">) => void;
+  activeUser: Omit<TUser, "id"> | null;
+  setActiveUser: (info: Omit<TUser, "id">) => void;
   createUser: (user: Omit<TUser, "id">) => void;
 };
 
