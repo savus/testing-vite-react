@@ -9,6 +9,7 @@ import { isValid } from "../utils/validations";
 import { allCities } from "../utils/allCities";
 import { useUserContext } from "./Providers/UserInfoProvider";
 import { useModalContext } from "./Providers/ModalContextProvider";
+import toast from "react-hot-toast";
 
 const firstNameErrorMessage =
   "First name must be at least alphanumeric with at least 2 characters and no spaces";
@@ -78,13 +79,24 @@ export const FormContent = () => {
             city: cityInput,
             phone: phoneInput.join(""),
           });
+
           createUser({
             firstName: firstNameInput,
             lastName: lastNameInput,
             email: emailInput,
             city: cityInput,
             phone: phoneInput.join(""),
-          });
+          })
+            .then(() => {
+              toast.success("User successfully posted");
+            })
+            .catch((e) => {
+              toast.error(e);
+            })
+            .finally(() => {
+              setIsLoading(false);
+            });
+
           setVisibleModal("none");
           resetInputValues();
         }

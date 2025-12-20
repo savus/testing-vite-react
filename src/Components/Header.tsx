@@ -38,8 +38,8 @@ export const Header = () => {
       <div>
         Users:
         <ul>
-          {allUsers.map((user) => (
-            <User user={user} />
+          {allUsers.map((user, index) => (
+            <User user={user} key={index} />
           ))}
         </ul>
       </div>

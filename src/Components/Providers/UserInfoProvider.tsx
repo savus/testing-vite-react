@@ -17,46 +17,36 @@ export const UserInfoProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const refetchData = () => {
-    setIsLoading(true);
-    Requests.getAllUsers()
-      .then(setAllUsers)
-      .finally(() => {
-        setIsLoading(false);
-      });
+    return Requests.getAllUsers().then(setAllUsers);
   };
 
   useEffect(() => {
-    refetchData();
+    setIsLoading(true);
+    refetchData()
+      .then(() => {
+        toast.success("Users loaded");
+      })
+      .catch((e) => {
+        toast.error(e);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   const createUser = (body: Omit<TUser, "id">) => {
     setIsLoading(true);
-    Requests.postUser(body)
-      .then(refetchData)
-      .then(() => {
-        toast.success("User posted!");
-      })
-      .catch(() => {
-        toast.error("Something went wrong!");
-      })
-      .finally(() => {
-        setIsLoading(true);
-      });
+    return Requests.postUser(body).then(refetchData);
   };
 
   const updateUser = (body: Partial<TUser>, id: string) => {
     setIsLoading(true);
-    return Requests.editUser(body, id)
-      .then(refetchData)
-      .then(() => {
-        toast.success(`User ${id} updated!`);
-      })
-      .catch(() => {
-        toast.error("Something went wrong!)");
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    return Requests.editUser(body, id).then(refetchData);
+  };
+
+  const deleteUser = (id: string) => {
+    setIsLoading(true);
+    return Requests.deleteUser(id).then(refetchData);
   };
 
   return (
@@ -67,7 +57,8 @@ export const UserInfoProvider = ({ children }: { children: ReactNode }) => {
         activeUser,
         setActiveUser,
         createUser,
-        // updateUser,
+        updateUser,
+        deleteUser,
         isLoading,
         setIsLoading,
       }}

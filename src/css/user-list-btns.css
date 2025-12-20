@@ -1,0 +1,18 @@
+.user-list-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 20px;
+  width: 150px;
+  justify-content: center;
+}
+
+.user-list-btns span {
+  padding-left: 10px;
+}
+
+.user-list-btns input {
+  border: 1px solid black;
+  width: 100px;
+  margin: 0;
+}

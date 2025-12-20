@@ -43,7 +43,7 @@ export type TModalContext = {
 export type TInputProps = ComponentProps<"input">;
 
 export type TUser = {
-  id: number;
+  id: string;
   firstName: string;
   lastName: string;
   city: string;
@@ -56,8 +56,9 @@ export type TUserContext = {
   setAllUsers: (users: TUser[]) => void;
   activeUser: Omit<TUser, "id"> | null;
   setActiveUser: (info: Omit<TUser, "id">) => void;
-  createUser: (user: Omit<TUser, "id">) => void;
-  // updateUser: (user: Partial<TUser>) => void;
+  createUser: (user: Omit<TUser, "id">) => Promise<void>;
+  updateUser: (user: Partial<TUser>, id: string) => Promise<void>;
+  deleteUser: (id: string) => Promise<void>;
   isLoading: boolean;
   setIsLoading: (state: boolean) => void;
 };

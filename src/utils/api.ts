@@ -18,14 +18,14 @@ export const Requests = {
       body: JSON.stringify(body),
     }).then((response) => response.json()),
 
-  editUser: (body: Partial<TUser>, id: string) =>
+  editUser: (body: Partial<TUser>, id: string): Promise<TUser> =>
     fetch(`${fetchUsers}/${id}`, {
       method: "PATCH",
       headers: headers,
       body: JSON.stringify(body),
     }).then((response) => response.json()),
 
-  deleteUser: (id: string) =>
+  deleteUser: (id: string): Promise<TUser> =>
     fetch(`${fetchUsers}/${id}`, {
       method: "DELETE",
     }).then((response) => response.json()),
