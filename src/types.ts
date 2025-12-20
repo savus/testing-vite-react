@@ -57,6 +57,9 @@ export type TUserContext = {
   activeUser: Omit<TUser, "id"> | null;
   setActiveUser: (info: Omit<TUser, "id">) => void;
   createUser: (user: Omit<TUser, "id">) => void;
+  // updateUser: (user: Partial<TUser>) => void;
+  isLoading: boolean;
+  setIsLoading: (state: boolean) => void;
 };
 
 export type TPhoneInput = [string, string, string];

@@ -17,4 +17,16 @@ export const Requests = {
       headers,
       body: JSON.stringify(body),
     }).then((response) => response.json()),
+
+  editUser: (body: Partial<TUser>, id: string) =>
+    fetch(`${fetchUsers}/${id}`, {
+      method: "PATCH",
+      headers: headers,
+      body: JSON.stringify(body),
+    }).then((response) => response.json()),
+
+  deleteUser: (id: string) =>
+    fetch(`${fetchUsers}/${id}`, {
+      method: "DELETE",
+    }).then((response) => response.json()),
 };

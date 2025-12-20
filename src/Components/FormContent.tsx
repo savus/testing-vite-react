@@ -8,6 +8,7 @@ import { ErrorMessage } from "./ErrorMessage";
 import { isValid } from "../utils/validations";
 import { allCities } from "../utils/allCities";
 import { useUserContext } from "./Providers/UserInfoProvider";
+import { useModalContext } from "./Providers/ModalContextProvider";
 
 const firstNameErrorMessage =
   "First name must be at least alphanumeric with at least 2 characters and no spaces";
@@ -23,7 +24,8 @@ const phoneErrorMessage =
   "phone must be numbers, no spaces, and no special characters";
 
 export const FormContent = () => {
-  const { setActiveUser, createUser } = useUserContext();
+  const { setActiveUser, createUser, setIsLoading } = useUserContext();
+  const { setVisibleModal } = useModalContext();
   const [firstNameInput, setFirstNameInput] = useState("");
   const [lastNameInput, setLastNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
@@ -68,6 +70,7 @@ export const FormContent = () => {
         e.preventDefault();
         setHasSubmitted(true);
         if (!doBadInputsExist) {
+          setIsLoading(true);
           setActiveUser({
             firstName: firstNameInput,
             lastName: lastNameInput,
@@ -82,6 +85,7 @@ export const FormContent = () => {
             city: cityInput,
             phone: phoneInput.join(""),
           });
+          setVisibleModal("none");
           resetInputValues();
         }
       }}

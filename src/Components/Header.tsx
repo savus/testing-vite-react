@@ -4,6 +4,7 @@ import { NavItem } from "./NavItem";
 import { useModalContext } from "./Providers/ModalContextProvider";
 import { useNavbarStateContext } from "./Providers/NavbarContextProvider";
 import { useUserContext } from "./Providers/UserInfoProvider";
+import { User } from "./User";
 
 export const Header = () => {
   const { dropdownMenu, setDropdownMenu, dropdownRef } =
@@ -37,10 +38,8 @@ export const Header = () => {
       <div>
         Users:
         <ul>
-          {allUsers.map((user, index) => (
-            <li key={index}>
-              {user.firstName}:{user.lastName}
-            </li>
+          {allUsers.map((user) => (
+            <User user={user} />
           ))}
         </ul>
       </div>

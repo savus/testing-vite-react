@@ -65,3 +65,11 @@
   background-color: rgba(0, 0, 0, 0.2);
   color: rgba(240, 240, 240);
 }
+
+.form-content .submit-btn:disabled:hover,
+.form-content .submit-btn:disabled:active,
+.form-content .submit-btn:disabled {
+  cursor: not-allowed;
+  background-color: #000;
+  color: #fff;
+}
