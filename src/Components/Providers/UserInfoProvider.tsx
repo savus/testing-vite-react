@@ -7,6 +7,7 @@ import {
 } from "react";
 import type { TUser, TUserContext } from "../../types";
 import { Requests } from "../../utils/api";
+import toast from "react-hot-toast";
 
 const UserContext = createContext({} as TUserContext);
 
@@ -15,23 +16,48 @@ export const UserInfoProvider = ({ children }: { children: ReactNode }) => {
   const [activeUser, setActiveUser] = useState<Omit<TUser, "id"> | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const refetchData = () =>
+  const refetchData = () => {
+    setIsLoading(true);
     Requests.getAllUsers()
       .then(setAllUsers)
       .finally(() => {
         setIsLoading(false);
       });
+  };
 
   useEffect(() => {
-    setIsLoading(true);
     refetchData();
   }, []);
 
-  const createUser = (body: Omit<TUser, "id">) =>
-    Requests.postUser(body).then(refetchData);
+  const createUser = (body: Omit<TUser, "id">) => {
+    setIsLoading(true);
+    Requests.postUser(body)
+      .then(refetchData)
+      .then(() => {
+        toast.success("User posted!");
+      })
+      .catch(() => {
+        toast.error("Something went wrong!");
+      })
+      .finally(() => {
+        setIsLoading(true);
+      });
+  };
 
-  const updateUser = (body: Partial<TUser>, id: string) =>
-    Requests.editUser(body, id).then(refetchData);
+  const updateUser = (body: Partial<TUser>, id: string) => {
+    setIsLoading(true);
+    return Requests.editUser(body, id)
+      .then(refetchData)
+      .then(() => {
+        toast.success(`User ${id} updated!`);
+      })
+      .catch(() => {
+        toast.error("Something went wrong!)");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
 
   return (
     <UserContext.Provider

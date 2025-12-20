@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import { FormContent } from "./Components/FormContent.js";
 import { Header } from "./Components/Header.js";
 import { Modal } from "./Components/Modal.js";
@@ -10,6 +11,7 @@ import "./css/index.css";
 function App() {
   return (
     <>
+      <Toaster />
       <UserInfoProvider>
         <ModalContextProvider>
           <NavbarContextProvider>
