@@ -27,7 +27,7 @@ export const UserInfoProvider = ({ children }: { children: ReactNode }) => {
         toast.success("Users loaded");
       })
       .catch((e) => {
-        toast.error(e);
+        toast.error(e.message);
       })
       .finally(() => {
         setIsLoading(false);

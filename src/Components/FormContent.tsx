@@ -91,7 +91,7 @@ export const FormContent = () => {
               toast.success("User successfully posted");
             })
             .catch((e) => {
-              toast.error(e);
+              toast.error(e.message);
             })
             .finally(() => {
               setIsLoading(false);

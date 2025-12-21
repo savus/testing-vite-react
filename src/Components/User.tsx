@@ -4,7 +4,8 @@ import "../css/user-list-btns.css";
 import { useUserContext } from "./Providers/UserInfoProvider";
 import toast from "react-hot-toast";
 
-export const User = ({ user: { id, firstName } }: { user: TUser }) => {
+export const User = ({ user }: { user: TUser }) => {
+  const { firstName, id } = user;
   const { updateUser, deleteUser, isLoading, setIsLoading } = useUserContext();
   const [editMode, setEditMode] = useState(false);
   const [firstNameInput, setFirstNameInput] = useState(firstName);
