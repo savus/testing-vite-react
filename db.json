@@ -1,82 +1,12 @@
 {
-  "notes": [
-    {
-      "id": "1",
-      "title": "My First Note",
-      "content": "I really love pizza"
-    },
-    {
-      "id": "2",
-      "title": "My Second Note",
-      "content": "Seriously i'ts kind of a problems"
-    },
-    {
-      "id": "3",
-      "title": "Note 4",
-      "content": "I'm note 4"
-    },
-    {
-      "id": "4",
-      "title": "Some stuff to test with",
-      "content": "And then some stuff"
-    }
-  ],
   "users": [
     {
-      "firstName": "bus",
-      "lastName": "bu",
+      "firstName": "WAKAKAKA",
+      "lastName": "sssseeeee",
       "email": "bud@gus.com",
-      "city": "bus",
-      "phone": "2454565545",
-      "id": 28
-    },
-    {
-      "firstName": "bus",
-      "lastName": "bu",
-      "email": "bud@gus.com",
-      "city": "bus",
-      "phone": "2454565545",
-      "id": 29
-    },
-    {
-      "firstName": "bus",
-      "lastName": "bu",
-      "email": "bud@gus.com",
-      "city": "bus",
-      "phone": "2454565545",
-      "id": 30
-    },
-    {
-      "firstName": "bus",
-      "lastName": "bu",
-      "email": "bud@gus.com",
-      "city": "bus",
-      "phone": "2454565545",
-      "id": 31
-    },
-    {
-      "firstName": "bus",
-      "lastName": "bu",
-      "email": "bud@gus.com",
-      "city": "bus",
-      "phone": "2454565545",
-      "id": 32
-    },
-    {
-      "firstName": "bus",
-      "lastName": "bu",
-      "email": "bud@gus.com",
-      "city": "bus",
-      "phone": "2454565545",
-      "id": 33
-    },
-    {
-      "firstName": "bus4",
-      "lastName": "bu",
-      "email": "bud@gus.com",
-      "city": "bus",
-      "phone": "2454565545",
-      "id": 37
+      "city": "ssss",
+      "phone": "6666666666",
+      "id": 15
     }
   ]
 }

@@ -43,12 +43,10 @@ export const UserInfoProvider = ({ children }: { children: ReactNode }) => {
 
   const updateUser = async (body: TPartialUser, id: string) => {
     setIsLoading(true);
-    return Requests.editUser(body, id)
+    return Requests.updateUser(body, id)
       .then(refetchData)
       .finally(() => {
-        return Requests.getAllUsers().then((data) => {
-          setAllUsers(data);
-        });
+        setIsLoading(false);
       });
   };
 
@@ -56,15 +54,19 @@ export const UserInfoProvider = ({ children }: { children: ReactNode }) => {
     setIsLoading(true);
     return Requests.deleteUser(id)
       .then(refetchData)
-      .then(() => {
-        return Requests.getAllUsers().then((data) => {
-          setAllUsers(data);
-        });
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
-  const createUser = (body: TOmitID) =>
-    Requests.postUser(body).then(refetchData);
+  const createUser = (body: TOmitID) => {
+    setIsLoading(true);
+    return Requests.postUser(body)
+      .then(refetchData)
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
 
   return (
     <UserContext.Provider

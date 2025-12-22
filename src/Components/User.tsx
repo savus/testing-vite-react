@@ -6,7 +6,7 @@ import { useUserContext } from "./Providers/UserInfoProvider";
 
 export const User = ({ user: { id, firstName } }: { user: TUser }) => {
   const { isLoading, updateUser, setIsLoading, deleteUser } = useUserContext();
-  const [firstNameInput, setFirstNameInput] = useState("");
+  const [firstNameInput, setFirstNameInput] = useState(firstName);
   const [editMode, setEditMode] = useState(false);
   const inputRow = () => {
     if (isLoading) return <span>...loading</span>;
@@ -23,13 +23,28 @@ export const User = ({ user: { id, firstName } }: { user: TUser }) => {
   };
   return (
     <div className="user-list-btns">
+      <div>
+        <div>First Name:{firstName}</div>
+        <div>Input:{firstNameInput}</div>
+      </div>
       <span>{id}</span>
       {inputRow()}
       <div className="">
         <button
-          onClick={(e) => {
-            e.preventDefault();
+          onClick={() => {
             setEditMode(!editMode);
+            if (editMode) {
+              updateUser({ firstName: firstNameInput }, id)
+                .then(() => {
+                  toast.success("User updated!");
+                })
+                .catch((e) => {
+                  toast.error(e.message);
+                })
+                .finally(() => {
+                  setIsLoading(false);
+                });
+            }
           }}
         >
           Edit
@@ -52,22 +67,6 @@ export const User = ({ user: { id, firstName } }: { user: TUser }) => {
           }}
         >
           Delete
-        </button>
-        <button
-          onClick={() => {
-            updateUser({ firstName: firstNameInput }, id)
-              .then(() => {
-                toast.success("User updated!");
-              })
-              .catch((e) => {
-                toast.error(e.message);
-              })
-              .finally(() => {
-                setIsLoading(false);
-              });
-          }}
-        >
-          Save
         </button>
       </div>
     </div>
