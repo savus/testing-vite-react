@@ -51,17 +51,9 @@ export type TUser = {
   phone: string;
 };
 
-export type TUserContext = {
-  allUsers: TUser[];
-  setAllUsers: (users: TUser[]) => void;
-  activeUser: Omit<TUser, "id"> | null;
-  setActiveUser: (info: Omit<TUser, "id">) => void;
-  createUser: (user: Omit<TUser, "id">) => Promise<void>;
-  updateUser: (user: Partial<TUser>, id: string) => Promise<void>;
-  deleteUser: (id: string) => Promise<void>;
-  isLoading: boolean;
-  setIsLoading: (state: boolean) => void;
-};
+export type TOmitID = Omit<TUser, "id">;
+
+export type TPartialUser = Partial<TUser>;
 
 export type TPhoneInput = [string, string, string];
 

@@ -10,7 +10,8 @@ export const Header = () => {
   const { dropdownMenu, setDropdownMenu, dropdownRef } =
     useNavbarStateContext();
   const { setVisibleModal } = useModalContext();
-  const { allUsers } = useUserContext();
+  const { allUsers, isLoading } = useUserContext();
+
   return (
     <header className="main-header">
       <Navbar>
