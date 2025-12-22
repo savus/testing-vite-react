@@ -24,10 +24,7 @@ export const UserInfoProvider = ({ children }: { children: ReactNode }) => {
   const [allUsers, setAllUsers] = useState<TUser[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const refetchData = () =>
-    Requests.getAllUsers().then((data) => {
-      return setAllUsers(data);
-    });
+  const refetchData = () => Requests.getAllUsers().then(setAllUsers);
 
   useEffect(() => {
     setIsLoading(true);
@@ -46,12 +43,24 @@ export const UserInfoProvider = ({ children }: { children: ReactNode }) => {
 
   const updateUser = async (body: TPartialUser, id: string) => {
     setIsLoading(true);
-    return Requests.editUser(body, id).then(refetchData);
+    return Requests.editUser(body, id)
+      .then(refetchData)
+      .finally(() => {
+        return Requests.getAllUsers().then((data) => {
+          setAllUsers(data);
+        });
+      });
   };
 
   const deleteUser = async (id: string) => {
     setIsLoading(true);
-    return Requests.deleteUser(id).then(refetchData);
+    return Requests.deleteUser(id)
+      .then(refetchData)
+      .then(() => {
+        return Requests.getAllUsers().then((data) => {
+          setAllUsers(data);
+        });
+      });
   };
 
   const createUser = (body: TOmitID) =>

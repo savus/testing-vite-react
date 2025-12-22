@@ -41,22 +41,7 @@ export const Header = () => {
         Users:
         <ul>
           {allUsers.map((user, index) => (
-            <User
-              user={user}
-              key={index}
-              onDeleteClick={() => {
-                deleteUser(user.id)
-                  .then(() => {
-                    toast.success("user has been deleted!");
-                  })
-                  .catch((e) => {
-                    toast.error(e.message);
-                  })
-                  .finally(() => {
-                    setIsLoading(false);
-                  });
-              }}
-            />
+            <User user={user} key={index} />
           ))}
         </ul>
       </div>
