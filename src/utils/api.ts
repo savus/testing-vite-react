@@ -10,10 +10,22 @@ export const Requests = {
   getAllUsers: (): Promise<TUser[]> =>
     fetch(`${fetchUsers}`).then((response) => response.json()),
 
+  postUser: (body: TOmitID) =>
+    fetch(`${fetchUsers}`, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(body),
+    }).then((response) => response.json()),
+
   editUser: (body: TPartialUser, id: string): Promise<TUser> =>
     fetch(`${fetchUsers}/${id}`, {
       method: "PATCH",
       headers: headers,
       body: JSON.stringify(body),
+    }).then((response) => response.json()),
+
+  deleteUser: (id: string): Promise<TUser> =>
+    fetch(`${fetchUsers}/${id}`, {
+      method: "DELETE",
     }).then((response) => response.json()),
 };

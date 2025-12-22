@@ -25,7 +25,7 @@ const phoneErrorMessage =
   "phone must be numbers, no spaces, and no special characters";
 
 export const FormContent = () => {
-  const { setActiveUser, createUser, setIsLoading } = useUserContext();
+  const { createUser, setIsLoading } = useUserContext();
   const { setVisibleModal } = useModalContext();
   const [firstNameInput, setFirstNameInput] = useState("");
   const [lastNameInput, setLastNameInput] = useState("");
@@ -72,13 +72,6 @@ export const FormContent = () => {
         setHasSubmitted(true);
         if (!doBadInputsExist) {
           setIsLoading(true);
-          setActiveUser({
-            firstName: firstNameInput,
-            lastName: lastNameInput,
-            email: emailInput,
-            city: cityInput,
-            phone: phoneInput.join(""),
-          });
 
           createUser({
             firstName: firstNameInput,
@@ -97,8 +90,8 @@ export const FormContent = () => {
               setIsLoading(false);
             });
 
-          setVisibleModal("none");
-          resetInputValues();
+          // setVisibleModal("none");
+          // resetInputValues();
         }
       }}
     >

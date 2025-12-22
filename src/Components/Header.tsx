@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { DropdownMenu } from "./DropdownMenu";
 import { Navbar } from "./Navbar";
 import { NavItem } from "./NavItem";
@@ -10,7 +11,7 @@ export const Header = () => {
   const { dropdownMenu, setDropdownMenu, dropdownRef } =
     useNavbarStateContext();
   const { setVisibleModal } = useModalContext();
-  const { allUsers, isLoading } = useUserContext();
+  const { allUsers, deleteUser, setIsLoading } = useUserContext();
 
   return (
     <header className="main-header">
@@ -40,7 +41,22 @@ export const Header = () => {
         Users:
         <ul>
           {allUsers.map((user, index) => (
-            <User user={user} key={index} />
+            <User
+              user={user}
+              key={index}
+              onDeleteClick={() => {
+                deleteUser(user.id)
+                  .then(() => {
+                    toast.success("user has been deleted!");
+                  })
+                  .catch((e) => {
+                    toast.error(e.message);
+                  })
+                  .finally(() => {
+                    setIsLoading(false);
+                  });
+              }}
+            />
           ))}
         </ul>
       </div>
