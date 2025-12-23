@@ -28,4 +28,11 @@ export const Requests = {
       headers: headers,
       body: JSON.stringify(body),
     }).then((response) => response.json()),
+
+  updateUserOpt: (body: TPartialUser, id: string): Promise<Response> =>
+    fetch(`${fetchUsers}/${id}`, {
+      method: "PATCH",
+      headers: headers,
+      body: JSON.stringify(body),
+    }),
 };

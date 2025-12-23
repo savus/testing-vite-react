@@ -1,4 +1,3 @@
-import toast from "react-hot-toast";
 import { DropdownMenu } from "./DropdownMenu";
 import { Navbar } from "./Navbar";
 import { NavItem } from "./NavItem";
@@ -11,7 +10,7 @@ export const Header = () => {
   const { dropdownMenu, setDropdownMenu, dropdownRef } =
     useNavbarStateContext();
   const { setVisibleModal } = useModalContext();
-  const { allUsers, deleteUser, setIsLoading } = useUserContext();
+  const { allUsers } = useUserContext();
 
   return (
     <header className="main-header">

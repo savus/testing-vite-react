@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "serve": "json-server --watch db.json",
-    "serve:slow": "json-server --watch db.json --delay 3000"
+    "serve:slow": "json-server --watch db.json --delay 5000"
   },
   "dependencies": {
     "json-server": "^0.17.3",

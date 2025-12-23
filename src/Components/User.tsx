@@ -1,11 +1,18 @@
 import type { TUser } from "../types";
 import "../css/user-list-btns.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { useUserContext } from "./Providers/UserInfoProvider";
 
 export const User = ({ user: { id, firstName } }: { user: TUser }) => {
-  const { isLoading, updateUser, setIsLoading, deleteUser } = useUserContext();
+  const {
+    isLoading,
+    allUsers,
+    setAllUsers,
+    updateUserOpt,
+    setIsLoading,
+    deleteUser,
+  } = useUserContext();
   const [firstNameInput, setFirstNameInput] = useState(firstName);
   const [editMode, setEditMode] = useState(false);
   const inputRow = () => {
@@ -34,16 +41,21 @@ export const User = ({ user: { id, firstName } }: { user: TUser }) => {
           onClick={() => {
             setEditMode(!editMode);
             if (editMode) {
-              updateUser({ firstName: firstNameInput }, id)
-                .then(() => {
-                  toast.success("User updated!");
-                })
-                .catch((e) => {
-                  toast.error(e.message);
-                })
-                .finally(() => {
-                  setIsLoading(false);
-                });
+              // updateUser({ firstName: firstNameInput }, id)
+              //   .then(() => {
+              //     toast.success("User updated!");
+              //   })
+              //   .catch((e) => {
+              //     toast.error(e.message);
+              //   })
+              //   .finally(() => {
+              //     setIsLoading(false);
+              //   });
+              updateUserOpt({ firstName: firstNameInput }, id).catch((e) => {
+                toast.error(e.message);
+                setAllUsers(allUsers);
+                setFirstNameInput(firstName);
+              });
             }
           }}
         >

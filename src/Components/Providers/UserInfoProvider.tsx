@@ -14,6 +14,7 @@ type TUserContext = {
   isLoading: boolean;
   setIsLoading: (state: boolean) => void;
   updateUser: (user: TPartialUser, id: string) => Promise<void>;
+  updateUserOpt: (user: TPartialUser, id: string) => Promise<TUser>;
   deleteUser: (id: string) => Promise<void>;
   createUser: (body: TOmitID) => Promise<void>;
 };
@@ -50,6 +51,16 @@ export const UserInfoProvider = ({ children }: { children: ReactNode }) => {
       });
   };
 
+  const updateUserOpt = (body: TPartialUser, id: string): Promise<TUser> => {
+    const newState = allUsers.map((user) =>
+      user.id === id ? { ...user, ...body } : user
+    );
+
+    setAllUsers(newState);
+
+    return Requests.updateUser(body, id);
+  };
+
   const deleteUser = async (id: string) => {
     setIsLoading(true);
     return Requests.deleteUser(id)
@@ -76,6 +87,7 @@ export const UserInfoProvider = ({ children }: { children: ReactNode }) => {
         isLoading,
         setIsLoading,
         updateUser,
+        updateUserOpt,
         deleteUser,
         createUser,
       }}
