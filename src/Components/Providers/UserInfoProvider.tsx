@@ -8,15 +8,17 @@ import {
 import type { TOmitID, TPartialUser, TUser } from "../../types";
 import { Requests } from "../../utils/api";
 import toast from "react-hot-toast";
+
 type TUserContext = {
   allUsers: TUser[];
   setAllUsers: (users: TUser[]) => void;
   isLoading: boolean;
   setIsLoading: (state: boolean) => void;
-  updateUser: (user: TPartialUser, id: string) => Promise<void>;
-  updateUserOpt: (user: TPartialUser, id: string) => Promise<TUser>;
-  deleteUser: (id: string) => Promise<void>;
-  createUser: (body: TOmitID) => Promise<void>;
+  updateUser: (user: TPartialUser, id: string) => Promise<unknown>;
+  updateUserOpt: (user: TPartialUser, id: string) => Promise<unknown>;
+  deleteUser: (id: string) => Promise<unknown>;
+  deleteUserOpt: (id: string) => Promise<unknown>;
+  createUser: (body: TOmitID) => Promise<unknown>;
 };
 
 const UserContext = createContext({} as TUserContext);
@@ -51,22 +53,45 @@ export const UserInfoProvider = ({ children }: { children: ReactNode }) => {
       });
   };
 
-  const updateUserOpt = (body: TPartialUser, id: string): Promise<TUser> => {
+  const updateUserOpt = (body: TPartialUser, id: string) => {
     const newState = allUsers.map((user) =>
       user.id === id ? { ...user, ...body } : user
     );
 
     setAllUsers(newState);
 
-    return Requests.updateUser(body, id);
+    return Requests.updateUser(body, id)
+      .then(refetchData)
+      .then(() => {
+        toast.success("success");
+      })
+      .catch((e) => {
+        toast.error(e.message);
+        setAllUsers(allUsers);
+      });
   };
 
-  const deleteUser = async (id: string) => {
+  const deleteUser = (id: string) => {
     setIsLoading(true);
     return Requests.deleteUser(id)
       .then(refetchData)
       .finally(() => {
         setIsLoading(false);
+      });
+  };
+
+  const deleteUserOpt = (id: string) => {
+    const updatedData = allUsers.filter((user) => user.id !== id);
+
+    setAllUsers(updatedData);
+    return Requests.deleteUser(id)
+      .then(refetchData)
+      .then(() => {
+        toast.success("Sucessfully deleted user");
+      })
+      .catch((e) => {
+        toast.error(e.message);
+        setAllUsers(allUsers);
       });
   };
 
@@ -89,6 +114,7 @@ export const UserInfoProvider = ({ children }: { children: ReactNode }) => {
         updateUser,
         updateUserOpt,
         deleteUser,
+        deleteUserOpt,
         createUser,
       }}
     >

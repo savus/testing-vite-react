@@ -1,7 +1,6 @@
 import type { TUser } from "../types";
 import "../css/user-list-btns.css";
 import { useState } from "react";
-import toast from "react-hot-toast";
 import { useUserContext } from "./Providers/UserInfoProvider";
 
 export const User = ({ user: { id, firstName } }: { user: TUser }) => {
@@ -12,6 +11,7 @@ export const User = ({ user: { id, firstName } }: { user: TUser }) => {
     updateUserOpt,
     setIsLoading,
     deleteUser,
+    deleteUserOpt,
   } = useUserContext();
   const [firstNameInput, setFirstNameInput] = useState(firstName);
   const [editMode, setEditMode] = useState(false);
@@ -41,21 +41,7 @@ export const User = ({ user: { id, firstName } }: { user: TUser }) => {
           onClick={() => {
             setEditMode(!editMode);
             if (editMode) {
-              // updateUser({ firstName: firstNameInput }, id)
-              //   .then(() => {
-              //     toast.success("User updated!");
-              //   })
-              //   .catch((e) => {
-              //     toast.error(e.message);
-              //   })
-              //   .finally(() => {
-              //     setIsLoading(false);
-              //   });
-              updateUserOpt({ firstName: firstNameInput }, id).catch((e) => {
-                toast.error(e.message);
-                setAllUsers(allUsers);
-                setFirstNameInput(firstName);
-              });
+              updateUserOpt({ firstName: firstNameInput }, id);
             }
           }}
         >
@@ -66,16 +52,7 @@ export const User = ({ user: { id, firstName } }: { user: TUser }) => {
           onClick={(e) => {
             e.preventDefault();
             setEditMode(false);
-            deleteUser(id)
-              .then(() => {
-                toast.success("user has been deleted!");
-              })
-              .catch((e) => {
-                toast.error(e.message);
-              })
-              .finally(() => {
-                setIsLoading(false);
-              });
+            deleteUserOpt(id);
           }}
         >
           Delete

@@ -1,14 +1,6 @@
 {
   "users": [
     {
-      "firstName": "I wanna change my name",
-      "lastName": "meow",
-      "email": "mewmew@gmail.com",
-      "city": "Minersvillellweewewer",
-      "phone": "5555555555",
-      "id": 17
-    },
-    {
       "firstName": "meow",
       "lastName": "meow",
       "email": "mewmew@gmail.com",

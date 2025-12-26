@@ -8,7 +8,12 @@ const fetchUsers = `${BASE_URL}/${userEndpoints}`;
 
 export const Requests = {
   getAllUsers: (): Promise<TUser[]> =>
-    fetch(`${fetchUsers}`).then((response) => response.json()),
+    fetch(`${fetchUsers}`).then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP Error! Status: ${response.status}`);
+      }
+      return response.json();
+    }),
 
   postUser: (user: TOmitID): Promise<TUser> =>
     fetch(`${fetchUsers}`, {
@@ -20,19 +25,22 @@ export const Requests = {
   deleteUser: (id: string): Promise<TUser> =>
     fetch(`${fetchUsers}/${id}`, {
       method: "DELETE",
-    }).then((response) => response.json()),
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP Error! Status: ${response.status}`);
+      }
+      return response.json();
+    }),
 
   updateUser: (body: TPartialUser, id: string): Promise<TUser> =>
     fetch(`${fetchUsers}/${id}`, {
       method: "PATCH",
       headers: headers,
       body: JSON.stringify(body),
-    }).then((response) => response.json()),
-
-  updateUserOpt: (body: TPartialUser, id: string): Promise<Response> =>
-    fetch(`${fetchUsers}/${id}`, {
-      method: "PATCH",
-      headers: headers,
-      body: JSON.stringify(body),
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP Error! Status: ${response.status}`);
+      }
+      return response.json();
     }),
 };
