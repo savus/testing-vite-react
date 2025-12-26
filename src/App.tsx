@@ -1,5 +1,5 @@
 import { Toaster } from "react-hot-toast";
-import { FormContent } from "./Components/FormContent.js";
+import { CreateUserForm } from "./Components/CreateUserForm.tsx";
 import { Header } from "./Components/Header.js";
 import { Modal } from "./Components/Modal.js";
 import { PortfolioSection } from "./Components/PortfolioSection.js";
@@ -18,7 +18,7 @@ function App() {
             <Header />
             <PortfolioSection />
             <Modal header="Form" modalStateName="form">
-              <FormContent />
+              <CreateUserForm />
             </Modal>
           </NavbarContextProvider>
         </ModalContextProvider>

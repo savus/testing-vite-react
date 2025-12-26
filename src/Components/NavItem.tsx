@@ -4,13 +4,13 @@ import { useNavbarStateContext } from "./Providers/NavbarContextProvider";
 
 export const NavItem = ({
   text,
-  activeStateName,
+  activeTabName,
   onClick,
   children,
   dropdownRef,
 }: {
   text: string;
-  activeStateName: TActiveLink;
+  activeTabName: TActiveLink;
   onClick?: () => void;
   children?: ReactNode;
   dropdownRef?: RefObject<HTMLLIElement | null>;
@@ -23,10 +23,10 @@ export const NavItem = ({
   return (
     <li className="nav-item" ref={dropdownRef}>
       <a
-        className={isLinkActive(activeStateName)}
+        className={isLinkActive(activeTabName)}
         href="#"
         onClick={() => {
-          setActiveLink(activeStateName);
+          setActiveLink(activeTabName);
           if (onClick) onClick();
         }}
       >

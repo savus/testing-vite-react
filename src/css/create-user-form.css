@@ -1,4 +1,4 @@
-.form-content {
+.create-user-form {
   padding: 1rem;
   font-size: var(--size-20);
   display: flex;
@@ -6,7 +6,7 @@
   gap: var(--size-16);
 }
 
-.form-content .input-container {
+.create-user-form .input-container {
   display: flex;
   flex-direction: column;
   gap: var(--size-12);
@@ -46,29 +46,29 @@
   --width: calc(var(--size-50) + 2rem);
 }
 
-.form-content .submit-container {
+.create-user-form .submit-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.form-content .submit-btn {
+.create-user-form .submit-btn {
   max-width: 500px;
   cursor: pointer;
 }
 
-.form-content .submit-btn:hover {
+.create-user-form .submit-btn:hover {
   background-color: rgba(155, 155, 155, 0.2);
 }
 
-.form-content .submit-btn:active {
+.create-user-form .submit-btn:active {
   background-color: rgba(0, 0, 0, 0.2);
   color: rgba(240, 240, 240);
 }
 
-.form-content .submit-btn:disabled:hover,
-.form-content .submit-btn:disabled:active,
-.form-content .submit-btn:disabled {
+.create-user-form .submit-btn:disabled:hover,
+.create-user-form .submit-btn:disabled:active,
+.create-user-form .submit-btn:disabled {
   cursor: not-allowed;
   background-color: #000;
   color: #fff;

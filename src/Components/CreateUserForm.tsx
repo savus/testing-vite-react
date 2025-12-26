@@ -1,6 +1,6 @@
+import "../css/create-user-form.css";
 import { SubmitButton } from "./SubmitButton";
 import { TextInput } from "./TextInput";
-import "../css/form-content.css";
 import { PhoneInput } from "./PhoneInput";
 import { useState } from "react";
 import type { TPhoneInput } from "../types";
@@ -8,7 +8,6 @@ import { ErrorMessage } from "./ErrorMessage";
 import { isValid } from "../utils/validations";
 import { allCities } from "../utils/allCities";
 import { useUserContext } from "./Providers/UserInfoProvider";
-import { useModalContext } from "./Providers/ModalContextProvider";
 import toast from "react-hot-toast";
 
 const firstNameErrorMessage =
@@ -24,9 +23,8 @@ const cityErrorMessage = "City must be alphanumeric with at least 2 characters";
 const phoneErrorMessage =
   "phone must be numbers, no spaces, and no special characters";
 
-export const FormContent = () => {
+export const CreateUserForm = () => {
   const { createUser, setIsLoading } = useUserContext();
-  const { setVisibleModal } = useModalContext();
   const [firstNameInput, setFirstNameInput] = useState("");
   const [lastNameInput, setLastNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
@@ -65,7 +63,7 @@ export const FormContent = () => {
 
   return (
     <form
-      className="form-content"
+      className="create-user-form"
       action="#"
       onSubmit={(e) => {
         e.preventDefault();
@@ -90,8 +88,7 @@ export const FormContent = () => {
               setIsLoading(false);
             });
 
-          // setVisibleModal("none");
-          // resetInputValues();
+          resetInputValues();
         }
       }}
     >
