@@ -7,7 +7,6 @@ import { ModalContextProvider } from "./Components/Providers/ModalContextProvide
 import { NavbarContextProvider } from "./Components/Providers/NavbarContextProvider.js";
 import { UserInfoProvider } from "./Components/Providers/UserInfoProvider.js";
 import "./css/index.css";
-import { SectionLayout } from "./Components/Layouts/SectionLayout.js";
 
 function App() {
   return (
@@ -18,9 +17,6 @@ function App() {
           <NavbarContextProvider>
             <Header />
             <PortfolioSection />
-            <SectionLayout backgroundColor="blueviolet" />
-            <SectionLayout backgroundColor="palegreen" />
-            <SectionLayout backgroundColor="tomato" />
             <Modal header="Form" modalStateName="form">
               <FormContent />
             </Modal>

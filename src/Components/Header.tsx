@@ -36,15 +36,6 @@ export const Header = () => {
         <NavItem text="Gallery" activeStateName="gallery" />
         <NavItem text="Animations" activeStateName="animations" />
       </Navbar>
-      <div>
-        Users:
-        <ul>
-          {allUsers.map((user) => (
-            <User user={user} key={user.id} />
-          ))}
-        </ul>
-      </div>
-      <div>Active User:</div>
     </header>
   );
 };
