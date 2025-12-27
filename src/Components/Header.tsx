@@ -2,6 +2,7 @@ import { DropdownMenu } from "./DropdownMenu";
 import { NavItem } from "./NavItem";
 import "../css/navbar.css";
 import { useActiveContext } from "./Providers/ActiveStateProvider";
+import { DropdownItem } from "./DropdownItem";
 
 export const Header = () => {
   const { activeNavDropdown, setActiveNavDropdown, topDropdownRef } =
@@ -21,7 +22,23 @@ export const Header = () => {
               setActiveNavDropdown(toggleState);
             }}
           >
-            <DropdownMenu dropdownName="menus"></DropdownMenu>
+            <DropdownMenu dropdownName="menus">
+              <DropdownItem
+                text="Dropdown Item 1"
+                onClick={() => {
+                  console.log("clicked first");
+                }}
+              />
+              <DropdownItem
+                text="Dropdown Item 2"
+                onClick={() => {
+                  console.log("clicked second");
+                }}
+              />
+              <DropdownItem text="Dropdown Item 3" />
+              <DropdownItem text="Dropdown Item 4" />
+              <DropdownItem text="Dropdown Item 5" />
+            </DropdownMenu>
           </NavItem>
           <NavItem text="Gallery" activeLinkName="gallery" />
           <NavItem text="Animations" activeLinkName="animations" />
