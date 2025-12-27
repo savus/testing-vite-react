@@ -21,13 +21,7 @@ export const Header = () => {
               setActiveNavDropdown(toggleState);
             }}
           >
-            <DropdownMenu dropdownName="menus">
-              <li>Link 1</li>
-              <NavItem activeLinkName="menus" text="link-2" />
-              <li>Link 3</li>
-              <li>Link 4</li>
-              <li>Link 5</li>
-            </DropdownMenu>
+            <DropdownMenu dropdownName="menus"></DropdownMenu>
           </NavItem>
           <NavItem text="Gallery" activeLinkName="gallery" />
           <NavItem text="Animations" activeLinkName="animations" />
