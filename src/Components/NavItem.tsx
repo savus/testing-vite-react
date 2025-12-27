@@ -1,32 +1,35 @@
 import type { ReactNode, RefObject } from "react";
-import type { TActiveLink } from "../types";
-import { useNavbarStateContext } from "./Providers/NavbarContextProvider";
+import type { TActiveNavLink } from "../types";
+import { useActiveContext } from "./Providers/ActiveStateProvider";
+import { Shared } from "../utils/shared";
 
 export const NavItem = ({
   text,
-  activeTabName,
+  activeLinkName,
   onClick,
   children,
   dropdownRef,
 }: {
   text: string;
-  activeTabName: TActiveLink;
+  activeLinkName: TActiveNavLink;
   onClick?: () => void;
   children?: ReactNode;
   dropdownRef?: RefObject<HTMLLIElement | null>;
 }) => {
-  const { activeLink, setActiveLink } = useNavbarStateContext();
+  const { activeNavLink, setActiveNavLink } = useActiveContext();
 
-  const isLinkActive = (linkStateName: TActiveLink) =>
-    linkStateName === activeLink ? "active" : "";
+  const toggleActive = () =>
+    activeNavLink === activeLinkName
+      ? setActiveNavLink("none")
+      : setActiveNavLink(activeLinkName);
 
   return (
     <li className="nav-item" ref={dropdownRef}>
       <a
-        className={isLinkActive(activeTabName)}
+        className={Shared.shouldElementBeActive(activeNavLink, activeLinkName)}
         href="#"
         onClick={() => {
-          setActiveLink(activeTabName);
+          toggleActive();
           if (onClick) onClick();
         }}
       >

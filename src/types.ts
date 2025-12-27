@@ -1,21 +1,15 @@
-import type { ComponentProps, RefObject } from "react";
+import type { ComponentProps } from "react";
 
-export type TActiveLink = "form" | "menus" | "gallery" | "animations" | "none";
+export type TActiveNavLink =
+  | "form"
+  | "menus"
+  | "gallery"
+  | "animations"
+  | "none";
 
-export type TActiveLinkContext = {
-  activeLink: TActiveLink;
-  setActiveLink: (link: TActiveLink) => void;
-};
+export type TActiveNavDropdown = "menus" | "none";
 
 export type TActiveDropdown = "menus" | "none";
-
-export type TNavbarStateContext = {
-  activeDropdown: TActiveDropdown;
-  setActiveDropdown: (menu: TActiveDropdown) => void;
-  dropdownRef: RefObject<HTMLLIElement | null>;
-  activeLink: TActiveLink;
-  setActiveLink: (link: TActiveLink) => void;
-};
 
 export type TFilterLink = "all" | "web" | "app" | "ui" | "none";
 

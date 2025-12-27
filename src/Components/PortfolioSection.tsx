@@ -5,6 +5,8 @@ import { FilterLink } from "./FilterLink";
 import { PortfolioFilterNav } from "./PortfolioFilterNav";
 import type { TFilterContext, TFilterLink, TPortfolioCard } from "../types";
 import { PortfolioCard } from "./PortfolioCard";
+import { Shared } from "../utils/shared";
+import { useActiveContext } from "./Providers/ActiveStateProvider";
 
 export const FilterContext = createContext({} as TFilterContext);
 
@@ -60,6 +62,7 @@ const portfolioCards: TPortfolioCard[] = [
 ];
 
 export const PortfolioSection = () => {
+  const { activeNavLink } = useActiveContext();
   const [activeFilterLink, setActiveFilterLink] = useState<TFilterLink>("none");
   const [searchInput, setSearchInput] = useState("");
 
@@ -85,7 +88,12 @@ export const PortfolioSection = () => {
   });
 
   return (
-    <section className="portfolio-section container">
+    <section
+      className={`portfolio-section container slide ${Shared.shouldElementBeActive(
+        activeNavLink,
+        "gallery"
+      )}`}
+    >
       <h2>Portfolio</h2>
       <div className="search-container">
         <label htmlFor="search">

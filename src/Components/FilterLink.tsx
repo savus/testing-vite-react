@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import type { TFilterLink } from "../types";
-import { FilterContext } from "./PortfolioSection";
 
 export const FilterLink = ({
   text,

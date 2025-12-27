@@ -4,11 +4,18 @@
 
 .slide-in-section .slide {
   --translate-x: 100%;
-  position: relative;
+  --opacity: 0;
+  --visibility: hidden;
+  left: 50%;
+  opacity: var(--opacity);
+  visibility: var(--visibility);
   transform: translateX(var(--translate-x));
-  transition: transform 0.4s ease-in;
+  transition: all 0.4s ease-in;
+  position: absolute;
 }
 
 .slide-in-section .slide.active {
-  --translate-x: 0%;
+  --translate-x: -50%;
+  --opacity: 1;
+  --visibility: visible;
 }
