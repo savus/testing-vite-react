@@ -9,6 +9,8 @@ import { isValid } from "../utils/validations";
 import { allCities } from "../utils/allCities";
 import { useUserContext } from "./Providers/UserInfoProvider";
 import toast from "react-hot-toast";
+import { Shared } from "../utils/shared";
+import { useNavbarStateContext } from "./Providers/NavbarContextProvider";
 
 const firstNameErrorMessage =
   "First name must be at least alphanumeric with at least 2 characters and no spaces";
@@ -25,6 +27,7 @@ const phoneErrorMessage =
 
 export const CreateUserForm = () => {
   const { createUser, setIsLoading } = useUserContext();
+  const { activeLink } = useNavbarStateContext();
   const [firstNameInput, setFirstNameInput] = useState("");
   const [lastNameInput, setLastNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
@@ -63,7 +66,10 @@ export const CreateUserForm = () => {
 
   return (
     <form
-      className="create-user-form"
+      className={`create-user-form slide ${Shared.shouldElementBeActive(
+        activeLink,
+        "form"
+      )}`}
       action="#"
       onSubmit={(e) => {
         e.preventDefault();

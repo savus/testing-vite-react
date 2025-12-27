@@ -8,7 +8,7 @@ import {
 } from "react";
 import type {
   TNavbarStateContext,
-  TDropdownMenu,
+  TActiveDropdown,
   TActiveLink,
 } from "../../types";
 
@@ -21,7 +21,7 @@ export const NavbarContextProvider = ({
 }: {
   children: ReactNode;
 }) => {
-  const [dropdownMenu, setDropdownMenu] = useState<TDropdownMenu>("none");
+  const [activeDropdown, setActiveDropdown] = useState<TActiveDropdown>("none");
   const dropdownRef = useRef<HTMLLIElement | null>(null);
   const [activeLink, setActiveLink] = useState<TActiveLink>("none");
 
@@ -29,7 +29,7 @@ export const NavbarContextProvider = ({
     const handler = (e: MouseEvent) => {
       if (dropdownRef.current) {
         if (!dropdownRef.current.contains(e.target as HTMLLIElement))
-          setDropdownMenu("none");
+          setActiveDropdown("none");
       }
     };
     document.addEventListener("mousedown", handler);
@@ -38,8 +38,8 @@ export const NavbarContextProvider = ({
   return (
     <NavbarStateContext.Provider
       value={{
-        dropdownMenu,
-        setDropdownMenu,
+        activeDropdown,
+        setActiveDropdown,
         dropdownRef,
         activeLink,
         setActiveLink,

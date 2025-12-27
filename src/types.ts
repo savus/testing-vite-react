@@ -7,11 +7,11 @@ export type TActiveLinkContext = {
   setActiveLink: (link: TActiveLink) => void;
 };
 
-export type TDropdownMenu = "menus" | "none";
+export type TActiveDropdown = "menus" | "none";
 
 export type TNavbarStateContext = {
-  dropdownMenu: TDropdownMenu;
-  setDropdownMenu: (menu: TDropdownMenu) => void;
+  activeDropdown: TActiveDropdown;
+  setActiveDropdown: (menu: TActiveDropdown) => void;
   dropdownRef: RefObject<HTMLLIElement | null>;
   activeLink: TActiveLink;
   setActiveLink: (link: TActiveLink) => void;

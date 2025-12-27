@@ -5,7 +5,7 @@ import { useNavbarStateContext } from "./Providers/NavbarContextProvider";
 import "../css/navbar.css";
 
 export const Header = () => {
-  const { dropdownMenu, setDropdownMenu, dropdownRef } =
+  const { activeDropdown, setActiveDropdown, dropdownRef } =
     useNavbarStateContext();
   const { setVisibleModal } = useModalContext();
 
@@ -24,12 +24,13 @@ export const Header = () => {
             text="Menus"
             activeTabName="menus"
             onClick={() => {
-              const toggle = dropdownMenu === "menus" ? "none" : "menus";
-              setDropdownMenu(toggle);
+              const menuToToggle =
+                activeDropdown === "menus" ? "none" : "menus";
+              setActiveDropdown(menuToToggle);
             }}
             dropdownRef={dropdownRef}
           >
-            <DropdownMenu dropdownStateName="menus" />
+            <DropdownMenu dropdownName="menus" />
           </NavItem>
           <NavItem text="Gallery" activeTabName="gallery" />
           <NavItem text="Animations" activeTabName="animations" />

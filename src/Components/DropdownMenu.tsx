@@ -1,17 +1,17 @@
-import type { TDropdownMenu } from "../types";
+import type { TActiveDropdown } from "../types";
 import { useNavbarStateContext } from "./Providers/NavbarContextProvider";
 
 export const DropdownMenu = ({
-  dropdownStateName,
+  dropdownName,
 }: {
-  dropdownStateName: TDropdownMenu;
+  dropdownName: TActiveDropdown;
 }) => {
-  const { dropdownMenu } = useNavbarStateContext();
-  const isMenuActive = (stateName: TDropdownMenu) =>
-    stateName === dropdownMenu ? "active" : "";
+  const { activeDropdown } = useNavbarStateContext();
+  const isMenuActive = (stateName: TActiveDropdown) =>
+    stateName === activeDropdown ? "active" : "";
 
   return (
-    <div className={`dropdown-menu ${isMenuActive(dropdownStateName)}`}>
+    <div className={`dropdown-menu ${isMenuActive(dropdownName)}`}>
       Dropdown
     </div>
   );

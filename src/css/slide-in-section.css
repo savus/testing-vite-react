@@ -1,0 +1,14 @@
+.slide-in-section {
+  position: relative;
+}
+
+.slide-in-section .slide {
+  --translate-x: 100%;
+  position: relative;
+  transform: translateX(var(--translate-x));
+  transition: transform 0.4s ease-in;
+}
+
+.slide-in-section .slide.active {
+  --translate-x: 0%;
+}
