@@ -43,10 +43,15 @@
   transition: opacity var(--transition-speed) ease-in-out,
     visibility var(--transition-speed) ease-in-out,
     top var(--transition-speed) ease-in-out;
+  width: max-content;
 }
 
 .nav-item .dropdown-menu.active {
   --opacity: 1;
   --visibility: visible;
   --top: 120%;
+}
+
+.nav-item .dropdown-menu li {
+  padding: var(--size-12);
 }
