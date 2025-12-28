@@ -1,25 +1,49 @@
-import type { ReactNode } from "react";
+import { createContext, useState } from "react";
 import type { TActiveDropdown } from "../types";
 import { Shared } from "../utils/shared";
 import { useActiveContext } from "./Providers/ActiveStateProvider";
+import { DropdownItem } from "./DropdownItem";
+
+type TDropdownContext = {
+  activeDropdownLink: string;
+  setActiveDropdownLink: (link: string) => void;
+};
+
+export const DropdownContext = createContext({} as TDropdownContext);
 
 export const DropdownMenu = ({
-  children,
   dropdownName,
+  activeLinkNames,
 }: {
-  children?: ReactNode;
   dropdownName: TActiveDropdown;
+  activeLinkNames: string[];
 }) => {
-  const { activeNavDropdown, setActiveNavDropdown } = useActiveContext();
+  const { activeNavDropdown } = useActiveContext();
+  const [activeDropdownLink, setActiveDropdownLink] = useState("none");
 
   return (
-    <div
-      className={`dropdown-menu ${Shared.shouldElementBeActive(
-        activeNavDropdown,
-        dropdownName
-      )}`}
+    <DropdownContext.Provider
+      value={{ activeDropdownLink, setActiveDropdownLink }}
     >
-      <ul className="ul-defaults-none">{children}</ul>
-    </div>
+      <div
+        className={`dropdown-menu ${Shared.shouldElementBeActive(
+          activeNavDropdown,
+          dropdownName
+        )}`}
+      >
+        <ul className="ul-defaults-none">
+          {activeLinkNames.map((name) => (
+            <DropdownItem
+              key={name}
+              text={name}
+              activeStateName={name}
+              onClick={() => {
+                setActiveDropdownLink(name);
+              }}
+            />
+          ))}
+        </ul>
+      </div>
+    </DropdownContext.Provider>
   );
 };

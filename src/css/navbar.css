@@ -54,4 +54,11 @@
 
 .nav-item .dropdown-menu li {
   padding: var(--size-12);
+  cursor: pointer;
+  transition: color var(--transition-speed) ease;
+}
+
+.nav-item .dropdown-menu li.active,
+.nav-item .dropdown-menu li:hover {
+  color: var(--color-link);
 }

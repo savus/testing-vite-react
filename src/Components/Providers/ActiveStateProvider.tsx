@@ -30,8 +30,9 @@ export const ActiveStateProvider = ({ children }: { children: ReactNode }) => {
       const element = e.target as HTMLElement;
 
       if (topDropdownRef.current) {
-        if (!topDropdownRef.current.contains(element))
+        if (!topDropdownRef.current.contains(element)) {
           setActiveNavDropdown("none");
+        }
       }
     };
 

@@ -18,18 +18,13 @@ export const NavItem = ({
 }) => {
   const { activeNavLink, setActiveNavLink } = useActiveContext();
 
-  const toggleActive = () =>
-    activeNavLink === activeLinkName
-      ? setActiveNavLink("none")
-      : setActiveNavLink(activeLinkName);
-
   return (
     <li className="nav-item" ref={dropdownRef}>
       <a
         className={Shared.shouldElementBeActive(activeNavLink, activeLinkName)}
         href="#"
         onClick={() => {
-          toggleActive();
+          setActiveNavLink(activeLinkName);
           if (onClick) onClick();
         }}
       >
