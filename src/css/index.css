@@ -46,7 +46,8 @@ input {
   border: none;
 }
 
-.btn {
+.btn,
+.input {
   outline: none;
   border: 0;
   background: transparent;

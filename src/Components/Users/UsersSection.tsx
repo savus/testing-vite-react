@@ -8,22 +8,22 @@ export const UserSection = () => {
     >
       <div className="user-format-controls">
         <div className="search-container">
-          <input type="text" placeholder="search" />
+          <input type="text" placeholder="search" className="input" />
         </div>
-        <button className="slider-mode">Slider Mode</button>
+        <button className="slider-mode btn btn-primary">Slider Mode</button>
         <div className="filter-dropdown"></div>
       </div>
 
       <div className="showcase-container">
         <div className="card">
-          <h3 className="name">Jimmusen</h3>
-          <div className="details">
-            <h3 className="first-name">Jimmy</h3>
-            <h4 className="last-name">Musen</h4>
+          <h4 className="name">Username: Jimmusen</h4>
+          <div className="details" style={{ display: "none" }}>
+            <h4 className="first-name">First Name: Jimmy</h4>
+            <h6 className="last-name">Last Name: Musen</h6>
           </div>
           <div className="edit-buttons">
-            <button>Edit Mode</button>
-            <button>Delete</button>
+            <button className="btn ">Edit Mode</button>
+            <button className="btn ">Delete</button>
           </div>
         </div>
       </div>
