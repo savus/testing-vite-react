@@ -18,6 +18,12 @@
   --transition-speed: 150ms;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   font-size: 1rem;
   font-family: Arial, Helvetica, sans-serif;

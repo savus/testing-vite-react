@@ -31,7 +31,7 @@
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-  background-color: var(--bg-showcase-panel);
+  background: var(--grad-1);
   border-radius: 30px;
   position: absolute;
   box-shadow: inset 0px 0px 25px 1px rgba(200, 200, 200, 0.2);
@@ -52,4 +52,69 @@
 .showcase-container .card .edit-buttons button {
   /* margin-top: var(--size-20); */
   font-size: var(--size-16);
+}
+
+#test-select {
+  position: relative;
+  background-color: #000;
+  border: 1px inset rgba(255, 255, 255, 0.6);
+  width: 200px;
+  border-radius: 10px;
+  user-select: none;
+  z-index: 10;
+  cursor: pointer;
+}
+
+#test-select.active {
+  border-bottom: 0;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+#test-select i {
+  --rotate: 0deg;
+  position: absolute;
+  top: 50%;
+  right: 9%;
+  font-size: 20px;
+  color: white;
+  transform: translateY(-50%) rotate(var(--rotate));
+}
+
+#test-select.active i {
+  --rotate: -180deg;
+}
+
+#test-select .options-dropdown {
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  background-color: #000;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: none;
+}
+
+#test-select.active .options-dropdown {
+  display: block;
+}
+
+#test-select,
+.options-dropdown .select-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: var(--size-18);
+  padding: var(--size-10) var(--size-50);
+}
+
+.options-dropdown .select-option {
+  transition: background 0.3s ease;
+  border-radius: 10px;
+}
+
+.options-dropdown .select-option:hover {
+  background-color: #333;
+  cursor: pointer;
 }

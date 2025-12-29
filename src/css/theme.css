@@ -8,4 +8,9 @@
   --bg-showcase: #161c2d;
   --bg-showcase-panel: #22262e;
   --color-showcase: #fff;
+
+  --grad-1: linear-gradient(to right, #182848, #4b6cb7);
+
+  /* https://grabient.com/HQZhEYBpgNhAOaBOGNrnlYB2EAmdbbabPY4PABgNBkQFZhxsoYK8C9h6AWSyALSVQHaPXBJI4YH0lCcHIA?angle=225 */
+  --grad-2: linear-gradient(225deg, #0000ae 0%, #1a14b9 50%, #006598 100%);
 }

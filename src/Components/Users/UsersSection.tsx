@@ -1,6 +1,8 @@
+import { useState } from "react";
 import "../../css/user-section.css";
 
 export const UserSection = () => {
+  const [testActive, setTestActive] = useState(false);
   return (
     <section
       className="user-section slide active"
@@ -10,7 +12,23 @@ export const UserSection = () => {
         <div className="search-container">
           <input type="text" placeholder="search" className="input" />
         </div>
-        <button className="slider-mode btn btn-primary">Slider Mode</button>
+        <div
+          id="test-select"
+          className={`${testActive ? "active" : ""}`}
+          onClick={() => {
+            setTestActive(!testActive);
+          }}
+        >
+          <i className="fa-solid fa-chevron-down"></i>
+          {`Thing-1`}
+          <div className={`options-dropdown`}>
+            <div className="select-option">Thing-1</div>
+            <div className="select-option">Thing-2</div>
+            <div className="select-option">Thing-3</div>
+            <div className="select-option">Thing-4</div>
+            <div className="select-option">Thing-5</div>
+          </div>
+        </div>
         <div className="filter-dropdown"></div>
       </div>
 
