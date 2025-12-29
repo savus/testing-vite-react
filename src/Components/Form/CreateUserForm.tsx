@@ -1,16 +1,16 @@
 import "../css/create-user-form.css";
-import { SubmitButton } from "./SubmitButton";
-import { TextInput } from "./TextInput";
-import { PhoneInput } from "./PhoneInput";
+import { SubmitButton } from "../SubmitButton";
+import { TextInput } from "../TextInput";
+import { PhoneInput } from "../PhoneInput";
 import { useState } from "react";
-import type { TPhoneInput } from "../types";
+import type { TPhoneInput } from "../../types";
 import { ErrorMessage } from "./ErrorMessage";
-import { isValid } from "../utils/validations";
-import { allCities } from "../utils/allCities";
-import { useUserContext } from "./Providers/UserInfoProvider";
+import { isValid } from "../../utils/validations";
+import { allCities } from "../../utils/allCities";
+import { useUserContext } from "../Providers/UserInfoProvider";
 import toast from "react-hot-toast";
-import { Shared } from "../utils/shared";
-import { useActiveContext } from "./Providers/ActiveStateProvider";
+import { Shared } from "../../utils/shared";
+import { useActiveContext } from "../Providers/ActiveStateProvider";
 
 const firstNameErrorMessage =
   "First name must be at least alphanumeric with at least 2 characters and no spaces";
@@ -66,6 +66,7 @@ export const CreateUserForm = () => {
 
   return (
     <form
+      data-animation="slide-in-left"
       className={`create-user-form slide ${Shared.shouldElementBeActive(
         activeNavLink,
         "form"

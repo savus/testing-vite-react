@@ -1,4 +1,4 @@
-import type { TFilterLink } from "../types";
+import type { TFilterLink } from "../../types";
 
 export const FilterLink = ({
   text,

@@ -1,4 +1,4 @@
-import { useModalContext } from "./Providers/ModalContextProvider";
+import { useModalContext } from "../Providers/ModalContextProvider";
 
 export const ModalCloseButton = () => {
   const { setVisibleModal } = useModalContext();

@@ -10,12 +10,6 @@
   opacity: var(--opacity);
   visibility: var(--visibility);
   transform: translateX(var(--translate-x));
-  transition: all 0.4s ease-in;
+  transition: all 0.2s ease;
   position: absolute;
-}
-
-.slide-in-section .slide.active {
-  --translate-x: -50%;
-  --opacity: 1;
-  --visibility: visible;
 }

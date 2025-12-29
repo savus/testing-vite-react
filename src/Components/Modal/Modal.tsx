@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, type ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
 import "../css/modal.css";
-import type { TVisibleModal } from "../types";
-import { useModalContext } from "./Providers/ModalContextProvider";
-import { ModalCloseButton } from "./ModalCloseButton";
+import type { TVisibleModal } from "../../types";
+import { useModalContext } from "../Providers/ModalContextProvider";
+import { ModalCloseButton } from "../ModalCloseButton";
 export const Modal = ({
   header,
   children,

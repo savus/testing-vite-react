@@ -1,11 +1,11 @@
+import "../../css/navbar.css";
+import { useActiveContext } from "../Providers/ActiveStateProvider";
 import { DropdownMenu } from "./DropdownMenu";
 import { NavItem } from "./NavItem";
-import "../css/navbar.css";
-import { useActiveContext } from "./Providers/ActiveStateProvider";
 
+const dropdownMenuNames = ["users", "things", "other stuff"];
 export const Header = () => {
-  const { activeNavDropdown, setActiveNavDropdown, topDropdownRef } =
-    useActiveContext();
+  const { setActiveNavDropdown, topDropdownRef } = useActiveContext();
   return (
     <header className="main-header">
       <nav className="navbar">
@@ -21,7 +21,7 @@ export const Header = () => {
           >
             <DropdownMenu
               dropdownName="menus"
-              activeLinkNames={["stuff", "things", "other stuff"]}
+              activeLinkNames={dropdownMenuNames}
             />
           </NavItem>
           <NavItem text="Gallery" activeLinkName="gallery" />

@@ -1,11 +1,11 @@
 import { Toaster } from "react-hot-toast";
-import { CreateUserForm } from "./Components/CreateUserForm.tsx";
-import { Header } from "./Components/Header.js";
+import { Header } from "./Components/Header/Header.js";
 import { UserInfoProvider } from "./Components/Providers/UserInfoProvider.js";
 import { SlideInSection } from "./Components/Layouts/SlideInSection.tsx";
-import "./css/index.css";
 import { ActiveStateProvider } from "./Components/Providers/ActiveStateProvider.tsx";
-import { PortfolioSection } from "./Components/PortfolioSection.tsx";
+import "./css/index.css";
+import "./css/theme.css";
+import { UserSection } from "./Components/Users/UsersSection.tsx";
 
 function App() {
   return (
@@ -15,8 +15,9 @@ function App() {
         <ActiveStateProvider>
           <Header />
           <SlideInSection>
-            <CreateUserForm />
-            <PortfolioSection />
+            <UserSection />
+            {/* <CreateUserForm /> */}
+            {/* <PortfolioSection /> */}
           </SlideInSection>
         </ActiveStateProvider>
       </UserInfoProvider>

@@ -1,12 +1,12 @@
 import { createContext, useState } from "react";
 import "../css/portfolio-section.css";
-import { Images } from "../Images";
 import { FilterLink } from "./FilterLink";
 import { PortfolioFilterNav } from "./PortfolioFilterNav";
-import type { TFilterContext, TFilterLink, TPortfolioCard } from "../types";
 import { PortfolioCard } from "./PortfolioCard";
-import { Shared } from "../utils/shared";
-import { useActiveContext } from "./Providers/ActiveStateProvider";
+import type { TFilterContext, TFilterLink, TPortfolioCard } from "../../types";
+import { Images } from "../../Images";
+import { useActiveContext } from "../Providers/ActiveStateProvider";
+import { Shared } from "../../utils/shared";
 
 export const FilterContext = createContext({} as TFilterContext);
 
@@ -89,6 +89,7 @@ export const PortfolioSection = () => {
 
   return (
     <section
+      data-animation="slide-in-left"
       className={`portfolio-section container slide ${Shared.shouldElementBeActive(
         activeNavLink,
         "gallery"

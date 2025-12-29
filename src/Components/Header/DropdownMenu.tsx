@@ -1,8 +1,8 @@
 import { createContext, useState } from "react";
-import type { TActiveDropdown } from "../types";
-import { Shared } from "../utils/shared";
-import { useActiveContext } from "./Providers/ActiveStateProvider";
+import { useActiveContext } from "../Providers/ActiveStateProvider";
+import { Shared } from "../../utils/shared";
 import { DropdownItem } from "./DropdownItem";
+import type { TActiveDropdown } from "../../types";
 
 type TDropdownContext = {
   activeDropdownLink: string;

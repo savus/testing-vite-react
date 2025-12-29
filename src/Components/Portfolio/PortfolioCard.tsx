@@ -1,4 +1,4 @@
-import type { TPortfolioCard } from "../types";
+import type { TPortfolioCard } from "../../types";
 
 export const PortfolioCard = ({
   cardData: { img, popupHeader, popupText },

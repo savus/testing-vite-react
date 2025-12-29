@@ -1,7 +1,7 @@
 import type { ReactNode, RefObject } from "react";
-import type { TActiveNavLink } from "../types";
-import { useActiveContext } from "./Providers/ActiveStateProvider";
-import { Shared } from "../utils/shared";
+import { useActiveContext } from "../Providers/ActiveStateProvider";
+import { Shared } from "../../utils/shared";
+import type { TActiveNavLink } from "../../types";
 
 export const NavItem = ({
   text,
