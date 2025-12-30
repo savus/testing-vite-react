@@ -1,65 +1,46 @@
 .user-section {
   min-width: 991px;
-  background-color: var(--bg-showcase);
+  background-color: var(--bg-showcase-header);
 }
 
 .user-section * {
   color: var(--color-showcase);
 }
 
-.user-format-controls {
+.user-section .user-format-controls {
   padding: var(--size-20) 0;
   border-bottom: 1px solid var(--bg-primary);
   box-shadow: 1px 0px 25px 0px rgba(255, 255, 255, 0.2);
   display: flex;
+  gap: var(--size-50);
+  align-items: center;
   justify-content: center;
-  align-items: center;
 }
 
-.user-section .showcase-container {
-  height: 500px;
-  position: relative;
-}
-
-.showcase-container .card {
-  --card-width: 300px;
-  --card-height: 130px;
-  width: var(--card-width);
-  height: var(--card-height);
-  border: 1px solid white;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-direction: column;
-  background: var(--grad-1);
-  border-radius: 30px;
-  position: absolute;
-  box-shadow: inset 0px 0px 25px 1px rgba(200, 200, 200, 0.2);
-  top: 20px;
-  left: 20px;
-}
-
-.showcase-container .card h4,
-.showcase-container .card h6 {
-  margin: 0;
-}
-
-.showcase-container .card .edit-buttons {
-  display: flex;
-  gap: var(--size-16);
-}
-
-.showcase-container .card .edit-buttons button {
-  /* margin-top: var(--size-20); */
+.user-format-controls input {
+  --gradient-opacity: 0.8;
+  background: linear-gradient(
+    to right,
+    rgba(18, 75, 145, var(--gradient-opacity)),
+    rgba(96, 98, 150, var(--gradient-opacity)),
+    rgba(18, 75, 145, var(--gradient-opacity))
+  );
+  min-width: 300px;
+  padding: var(--size-16) 0 var(--size-16) var(--size-10);
   font-size: var(--size-16);
+}
+
+.user-format-controls input,
+#test-select {
+  border-radius: 10px;
 }
 
 #test-select {
   position: relative;
   background-color: #000;
   border: 1px inset rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.2);
   width: 200px;
-  border-radius: 10px;
   user-select: none;
   z-index: 10;
   cursor: pointer;
@@ -117,4 +98,43 @@
 .options-dropdown .select-option:hover {
   background-color: #333;
   cursor: pointer;
+}
+
+.user-section .showcase-container {
+  height: 500px;
+  position: relative;
+  background-color: var(--bg-showcase);
+}
+
+.showcase-container .card {
+  --card-width: 300px;
+  --card-height: 130px;
+  width: var(--card-width);
+  height: var(--card-height);
+  border: 1px solid white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  background: var(--grad-1);
+  border-radius: 30px;
+  position: absolute;
+  box-shadow: inset 0px 0px 25px 1px rgba(200, 200, 200, 0.2);
+  top: 20px;
+  left: 20px;
+}
+
+.showcase-container .card h4,
+.showcase-container .card h6 {
+  margin: 0;
+}
+
+.showcase-container .card .edit-buttons {
+  display: flex;
+  gap: var(--size-16);
+}
+
+.showcase-container .card .edit-buttons button {
+  /* margin-top: var(--size-20); */
+  font-size: var(--size-16);
 }
