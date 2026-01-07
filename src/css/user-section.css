@@ -1,5 +1,6 @@
 .user-section {
-  min-width: 991px;
+  --section-width: 991px;
+  width: var(--section-width);
   background: var(--bg-showcase-header);
 }
 
@@ -8,7 +9,8 @@
 }
 
 .user-section .user-format-controls {
-  padding: var(--size-20) 0;
+  --controls-height: 5.75rem;
+  height: var(--controls-height);
   border-bottom: 1px solid var(--bg-primary);
   box-shadow: 1px 0px 25px 0px rgba(255, 255, 255, 0.2);
   display: flex;
@@ -19,15 +21,18 @@
 
 .user-format-controls input {
   --gradient-opacity: 0.8;
-  background: linear-gradient(
-    to right,
-    rgba(18, 75, 145, var(--gradient-opacity)),
-    rgb(180, 180, 180, var(--gradient-opacity)),
-    rgba(18, 75, 145, var(--gradient-opacity))
-  );
+  background: #000;
   min-width: 300px;
-  padding: var(--size-16) 0 var(--size-16) var(--size-10);
+  padding: 0 var(--size-16);
   font-size: var(--size-16);
+  height: calc(var(--controls-height) * 0.576);
+}
+
+.user-format-controls input:focus {
+  outline: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0px 0px 5px 0px rgba(0, 225, 255, 0.8),
+    0px 0px 35px 0px rgba(0, 225, 255, 0.4);
 }
 
 .user-format-controls input,
@@ -88,6 +93,7 @@
   text-align: center;
   font-size: var(--size-18);
   padding: var(--size-10) var(--size-50);
+  height: calc(var(--controls-height) * 0.467);
 }
 
 .options-dropdown .select-option {
@@ -101,13 +107,16 @@
 }
 
 .user-section .showcase-container {
-  height: 500px;
   position: relative;
   background-color: var(--bg-showcase);
+  display: flex;
+  flex-wrap: wrap;
+  padding: var(--size-10);
+  gap: var(--size-10);
 }
 
 .showcase-container .card {
-  --card-width: 300px;
+  --card-width: calc(var(--section-width) * 0.319);
   --card-height: 130px;
   width: var(--card-width);
   height: var(--card-height);
@@ -118,10 +127,8 @@
   flex-direction: column;
   background: var(--grad-1);
   border-radius: 30px;
-  position: absolute;
+  position: relative;
   box-shadow: inset 0px 0px 25px 1px rgba(200, 200, 200, 0.2);
-  top: 20px;
-  left: 20px;
 }
 
 .showcase-container .card h4,

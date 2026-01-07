@@ -1,8 +1,25 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../../css/user-section.css";
+import { useUserContext } from "../Providers/UserInfoProvider";
 
-export const UserSection = () => {
-  const [testActive, setTestActive] = useState(false);
+export const UserSection = ({ dropdownList }: { dropdownList: string[] }) => {
+  const { allUsers } = useUserContext();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [selectedDropdown, setSelectedDropdown] = useState(dropdownList[0]);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      const element = e.target as HTMLElement;
+      if (dropdownRef.current) {
+        if (!dropdownRef.current.contains(element)) {
+          setDropdownOpen(false);
+        }
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+  }, []);
   return (
     <section
       className="user-section slide active"
@@ -14,19 +31,25 @@ export const UserSection = () => {
         </div>
         <div
           id="test-select"
-          className={`${testActive ? "active" : ""}`}
+          className={`${dropdownOpen ? "active" : ""}`}
           onClick={() => {
-            setTestActive(!testActive);
+            setDropdownOpen(!dropdownOpen);
           }}
+          ref={dropdownRef}
         >
           <i className="fa-solid fa-chevron-down"></i>
-          {`Thing-1`}
+          {selectedDropdown}
           <div className={`options-dropdown`}>
-            <div className="select-option">Thing-1</div>
-            <div className="select-option">Thing-2</div>
-            <div className="select-option">Thing-3</div>
-            <div className="select-option">Thing-4</div>
-            <div className="select-option">Thing-5</div>
+            {dropdownList.map((item) => (
+              <div
+                className="select-option"
+                onClick={() => {
+                  setSelectedDropdown(item);
+                }}
+              >
+                {item}
+              </div>
+            ))}
           </div>
         </div>
         <div className="filter-dropdown"></div>

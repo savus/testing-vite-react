@@ -15,7 +15,9 @@ function App() {
         <ActiveStateProvider>
           <Header />
           <SlideInSection>
-            <UserSection />
+            <UserSection
+              dropdownList={["Thing-1", "Thing-2", "Thing-3", "Thing-4"]}
+            />
             {/* <CreateUserForm /> */}
             {/* <PortfolioSection /> */}
           </SlideInSection>
