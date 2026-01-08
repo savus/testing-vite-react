@@ -117,18 +117,27 @@
 
 .showcase-container .card {
   --card-width: calc(var(--section-width) * 0.319);
-  --card-height: 130px;
+  --card-height: 150px;
   width: var(--card-width);
   height: var(--card-height);
-  border: 1px solid white;
+  border: 1px solid rgba(0, 255, 255);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-  background: var(--grad-1);
-  border-radius: 30px;
+  background: #000;
   position: relative;
-  box-shadow: inset 0px 0px 25px 1px rgba(200, 200, 200, 0.2);
+  box-shadow: inset 0px 0px 25px 1px rgba(0, 255, 255, 0.2);
+  transform: translate(5%, 30%);
+  opacity: 0;
+  transition: none;
+}
+
+.user-section.active .showcase-container .card {
+  transition: all calc(var(--anim-delay) * 2) cubic-bezier(0.34, 0.31, 0, 1.83)
+    var(--anim-delay);
+  transform: translate(0, 0);
+  opacity: 1;
 }
 
 .showcase-container .card h4,
