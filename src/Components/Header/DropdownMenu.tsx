@@ -18,7 +18,8 @@ export const DropdownMenu = ({
   dropdownName: TActiveDropdown;
   activeLinkNames: string[];
 }) => {
-  const { activeNavDropdown } = useActiveContext();
+  const { setActiveNavLink, activeNavDropdown, setActiveNavDropdown } =
+    useActiveContext();
   const [activeDropdownLink, setActiveDropdownLink] = useState("none");
 
   return (
@@ -28,7 +29,7 @@ export const DropdownMenu = ({
       <div
         className={`dropdown-menu ${Shared.shouldElementBeActive(
           activeNavDropdown,
-          dropdownName
+          dropdownName,
         )}`}
       >
         <ul className="ul-defaults-none">
@@ -38,7 +39,10 @@ export const DropdownMenu = ({
               text={name}
               activeStateName={name}
               onClick={() => {
+                const isUsersLink = name === "users";
+                if (isUsersLink) setActiveNavLink(name);
                 setActiveDropdownLink(name);
+                setActiveNavDropdown("none");
               }}
             />
           ))}

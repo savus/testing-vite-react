@@ -6,6 +6,8 @@ import { ActiveStateProvider } from "./Components/Providers/ActiveStateProvider.
 import "./css/index.css";
 import "./css/theme.css";
 import { UserSection } from "./Components/Users/UsersSection.tsx";
+import { CreateUserForm } from "./Components/Form/CreateUserForm.tsx";
+import { PortfolioSection } from "./Components/Portfolio/PortfolioSection.tsx";
 
 function App() {
   return (
@@ -18,8 +20,8 @@ function App() {
             <UserSection
               dropdownList={["Thing-1", "Thing-2", "Thing-3", "Thing-4"]}
             />
-            {/* <CreateUserForm /> */}
-            {/* <PortfolioSection /> */}
+            <CreateUserForm />
+            <PortfolioSection />
           </SlideInSection>
         </ActiveStateProvider>
       </UserInfoProvider>

@@ -1,15 +1,15 @@
-import "../css/create-user-form.css";
-import { SubmitButton } from "../SubmitButton";
-import { TextInput } from "../TextInput";
-import { PhoneInput } from "../PhoneInput";
+import toast from "react-hot-toast";
+import "../../css/create-user-form.css";
+import { allCities } from "../../utils/allCities";
+import { ErrorMessage } from "./ErrorMessage";
+import { PhoneInput } from "./PhoneInput";
+import { SubmitButton } from "./SubmitButton";
+import { TextInput } from "./TextInput";
+import { Shared } from "../../utils/shared";
+import { isValid } from "../../utils/validations";
 import { useState } from "react";
 import type { TPhoneInput } from "../../types";
-import { ErrorMessage } from "./ErrorMessage";
-import { isValid } from "../../utils/validations";
-import { allCities } from "../../utils/allCities";
 import { useUserContext } from "../Providers/UserInfoProvider";
-import toast from "react-hot-toast";
-import { Shared } from "../../utils/shared";
 import { useActiveContext } from "../Providers/ActiveStateProvider";
 
 const firstNameErrorMessage =
@@ -69,7 +69,7 @@ export const CreateUserForm = () => {
       data-animation="slide-in-left"
       className={`create-user-form slide ${Shared.shouldElementBeActive(
         activeNavLink,
-        "form"
+        "form",
       )}`}
       action="#"
       onSubmit={(e) => {
@@ -107,7 +107,9 @@ export const CreateUserForm = () => {
           type: "text",
           placeholder: "Type your first name here",
           value: firstNameInput,
-          onChange: ({ target: { value } }) => setFirstNameInput(value),
+          onChange: ({
+            target: { value },
+          }: React.ChangeEvent<HTMLInputElement>) => setFirstNameInput(value),
         }}
       />
       {showFirstNameError && <ErrorMessage text={firstNameErrorMessage} />}
@@ -119,7 +121,9 @@ export const CreateUserForm = () => {
           type: "text",
           placeholder: "Type your last name here",
           value: lastNameInput,
-          onChange: ({ target: { value } }) => setLastNameInput(value),
+          onChange: ({
+            target: { value },
+          }: React.ChangeEvent<HTMLInputElement>) => setLastNameInput(value),
         }}
       />
       {showLastNameError && <ErrorMessage text={lastNameErrorMessage} />}
@@ -131,7 +135,9 @@ export const CreateUserForm = () => {
           type: "email",
           placeholder: "email ex something@hotmail.com",
           value: emailInput,
-          onChange: ({ target: { value } }) => setEmailInput(value),
+          onChange: ({
+            target: { value },
+          }: React.ChangeEvent<HTMLInputElement>) => setEmailInput(value),
         }}
       />
       {showEmailError && <ErrorMessage text={emailErrorMessage} />}
@@ -144,7 +150,9 @@ export const CreateUserForm = () => {
           placeholder: "city ex. Hobbiton",
           list: "cities",
           value: cityInput,
-          onChange: ({ target: { value } }) => setCityInput(value),
+          onChange: ({
+            target: { value },
+          }: React.ChangeEvent<HTMLInputElement>) => setCityInput(value),
         }}
       />
       {showCityError && <ErrorMessage text={cityErrorMessage} />}

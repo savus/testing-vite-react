@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import "../css/portfolio-section.css";
+import "../../css/portfolio-section.css";
 import { FilterLink } from "./FilterLink";
 import { PortfolioFilterNav } from "./PortfolioFilterNav";
 import { PortfolioCard } from "./PortfolioCard";
@@ -92,7 +92,7 @@ export const PortfolioSection = () => {
       data-animation="slide-in-left"
       className={`portfolio-section container slide ${Shared.shouldElementBeActive(
         activeNavLink,
-        "gallery"
+        "gallery",
       )}`}
     >
       <h2>Portfolio</h2>

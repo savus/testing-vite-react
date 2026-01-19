@@ -2,9 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import "../../css/user-section.css";
 import { useUserContext } from "../Providers/UserInfoProvider";
 import { UserCard } from "./UserCard";
+import { Shared } from "../../utils/shared";
+import { useActiveContext } from "../Providers/ActiveStateProvider";
 
 export const UserSection = ({ dropdownList }: { dropdownList: string[] }) => {
   const { allUsers } = useUserContext();
+  const { activeNavLink } = useActiveContext();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedDropdown, setSelectedDropdown] = useState(dropdownList[0]);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
@@ -23,7 +26,7 @@ export const UserSection = ({ dropdownList }: { dropdownList: string[] }) => {
   }, []);
   return (
     <section
-      className="user-section slide active"
+      className={`user-section slide ${Shared.shouldElementBeActive(activeNavLink, "users")}`}
       data-animation="slide-in-left"
     >
       <div className="user-format-controls">

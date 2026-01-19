@@ -5,6 +5,7 @@ export type TActiveNavLink =
   | "menus"
   | "gallery"
   | "animations"
+  | "users"
   | "none";
 
 export type TActiveNavDropdown = "menus" | "none";
